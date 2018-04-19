@@ -9,10 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let service = ServicesManager()
+        service.getSerialCollection(serial: "2SK9D116GR8L6UQ")
+        
     }
 
     override func didReceiveMemoryWarning() {
