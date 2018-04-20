@@ -9,5 +9,13 @@
 import Foundation
 
 class APIManager {
+    let service: ServicesProtocol!
     
+    init() {
+        service = ServicesManager()
+    }
+    
+    func getLibraryBooks(identifier isbn: String, completion: @escaping completionHandler) {
+        self.service.getSerialCollection(serial: isbn, completion: completion)
+    }
 }

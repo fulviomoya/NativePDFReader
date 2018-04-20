@@ -9,32 +9,30 @@
 import UIKit
 
 class ValidationCodeViewController: BaseViewController {
-
-    var service: ServicesManager!
+    var api: APIManager?
     
     @IBOutlet weak var thumbnailImage: UIImageView!
     @IBOutlet weak var codeTextField: UITextField!
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        service = ServicesManager()
-    }
-   
-    @IBAction func validateButtonTouched(_ sender: Any) {
-        var image: UIImage?
-            self.service.getSerialCollection(serial: (self.codeTextField?.text)!, completetion:  {
-                for book in (self.service.completeLibrary?.books)! {
-                    self.service.downloadImage(url: book.thumbnailName, completetion: {
-                       self.thumbnailImage.image = self.service.ima
-                    })
-                }
-                
-              /*  if let imageValue = image {
-                    let aspectScaledToFitImage = imageValue.af_imageAspectScaled(toFit: CGSize(width: 100.0, height: 100.0))
-                     aspectScaledToFitImage
-                    self.view.layoutIfNeeded()
-                } */
-            })
+        
+        self.api = APIManager()
         
     }
+    
+    @IBAction func validateButtonTouched(_ sender: Any) {
+        api!.getLibraryBooks(identifier: codeTextField.text!){ response in 
+            for book in response.books {
+                print("book title: \(book.fileName)")
+            }
+        }
+    }
 }
+
+/*for book in (self.service.completeLibrary?.books)! {
+ self.service.downloadImage(url: book.thumbnailName, completetion: {
+ self.thumbnailImage.image = self.service.ima
+ })
+ }
+ */

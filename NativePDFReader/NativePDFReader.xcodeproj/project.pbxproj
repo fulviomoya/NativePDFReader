@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DD3E1B54E1D9F3D2E96D0F4D /* Pods_NativePDFReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFADD07577333D2CA6ED789 /* Pods_NativePDFReader.framework */; };
+		FABB90AE208A7AD700A389C6 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB90AD208A7AD700A389C6 /* BookTableViewCell.swift */; };
+		FABB90B0208A7B1700A389C6 /* TableConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB90AF208A7B1700A389C6 /* TableConstants.swift */; };
 		FAE447DE2088F2C100B5186A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE447DD2088F2C100B5186A /* AppDelegate.swift */; };
 		FAE447E02088F2C100B5186A /* PrincipalScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE447DF2088F2C100B5186A /* PrincipalScreenViewController.swift */; };
 		FAE447E32088F2C100B5186A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE447E12088F2C100B5186A /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 		FAF0CA682089600F00D0B00F /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CA672089600F00D0B00F /* Books.swift */; };
 		FAF0CA6B20896DCD00D0B00F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CA6A20896DCD00D0B00F /* BaseViewController.swift */; };
 		FAF0CA6F2089778000D0B00F /* ValidationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CA6E2089778000D0B00F /* ValidationCodeViewController.swift */; };
+		FAF0CA71208A2CA700D0B00F /* SensitiveConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CA70208A2CA700D0B00F /* SensitiveConstants.swift */; };
+		FAF0CA77208A7A4800D0B00F /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CA76208A7A4800D0B00F /* LibraryViewController.swift */; };
 		FAF88B9A2088FD2800B14D4B /* ServicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF88B992088FD2800B14D4B /* ServicesManager.swift */; };
 		FAF88B9C2088FD9A00B14D4B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF88B9B2088FD9A00B14D4B /* APIManager.swift */; };
 		FAF88B9F2088FE6100B14D4B /* GeneralConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF88B9E2088FE6100B14D4B /* GeneralConstants.swift */; };
@@ -25,6 +29,8 @@
 		3C34715C18C4D2D9C1F9664C /* Pods-NativePDFReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativePDFReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NativePDFReader/Pods-NativePDFReader.debug.xcconfig"; sourceTree = "<group>"; };
 		5AFADD07577333D2CA6ED789 /* Pods_NativePDFReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NativePDFReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C924DC39B9BE9D92C7D4AD11 /* Pods-NativePDFReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativePDFReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-NativePDFReader/Pods-NativePDFReader.release.xcconfig"; sourceTree = "<group>"; };
+		FABB90AD208A7AD700A389C6 /* BookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
+		FABB90AF208A7B1700A389C6 /* TableConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableConstants.swift; sourceTree = "<group>"; };
 		FAE447DA2088F2C100B5186A /* NativePDFReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NativePDFReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE447DD2088F2C100B5186A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAE447DF2088F2C100B5186A /* PrincipalScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalScreenViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +41,8 @@
 		FAF0CA672089600F00D0B00F /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		FAF0CA6A20896DCD00D0B00F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FAF0CA6E2089778000D0B00F /* ValidationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationCodeViewController.swift; sourceTree = "<group>"; };
+		FAF0CA70208A2CA700D0B00F /* SensitiveConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitiveConstants.swift; sourceTree = "<group>"; };
+		FAF0CA76208A7A4800D0B00F /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		FAF88B992088FD2800B14D4B /* ServicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesManager.swift; sourceTree = "<group>"; };
 		FAF88B9B2088FD9A00B14D4B /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		FAF88B9E2088FE6100B14D4B /* GeneralConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralConstants.swift; sourceTree = "<group>"; };
@@ -94,6 +102,7 @@
 				FAF88B9D2088FE4A00B14D4B /* Utils */,
 				FAF88B982088FCEB00B14D4B /* ViewModels */,
 				FAF0CA6920896DAD00D0B00F /* ViewControllers */,
+				FAF0CA74208A7A0B00D0B00F /* Scenes */,
 				FAF88B972088FCCF00B14D4B /* Services */,
 				FAE447DD2088F2C100B5186A /* AppDelegate.swift */,
 				FAE447E12088F2C100B5186A /* Main.storyboard */,
@@ -122,6 +131,24 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		FAF0CA74208A7A0B00D0B00F /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				FAF0CA75208A7A2100D0B00F /* Library */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		FAF0CA75208A7A2100D0B00F /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				FABB90AD208A7AD700A389C6 /* BookTableViewCell.swift */,
+				FAF0CA76208A7A4800D0B00F /* LibraryViewController.swift */,
+				FABB90AF208A7B1700A389C6 /* TableConstants.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		FAF88B972088FCCF00B14D4B /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				FAF88B9E2088FE6100B14D4B /* GeneralConstants.swift */,
+				FAF0CA70208A2CA700D0B00F /* SensitiveConstants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -261,12 +289,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAF0CA682089600F00D0B00F /* Books.swift in Sources */,
+				FAF0CA77208A7A4800D0B00F /* LibraryViewController.swift in Sources */,
 				FAF88B9C2088FD9A00B14D4B /* APIManager.swift in Sources */,
 				FAF0CA6F2089778000D0B00F /* ValidationCodeViewController.swift in Sources */,
+				FABB90AE208A7AD700A389C6 /* BookTableViewCell.swift in Sources */,
 				FAF88B9F2088FE6100B14D4B /* GeneralConstants.swift in Sources */,
 				FAF88B9A2088FD2800B14D4B /* ServicesManager.swift in Sources */,
+				FABB90B0208A7B1700A389C6 /* TableConstants.swift in Sources */,
 				FAE447E02088F2C100B5186A /* PrincipalScreenViewController.swift in Sources */,
 				FAF0CA6B20896DCD00D0B00F /* BaseViewController.swift in Sources */,
+				FAF0CA71208A2CA700D0B00F /* SensitiveConstants.swift in Sources */,
 				FAE447DE2088F2C100B5186A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

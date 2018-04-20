@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum ApiURL: String {
-    case BASE = "http://susaetaon.com:8080/"
+enum GeneralConstants {
+    
 }
