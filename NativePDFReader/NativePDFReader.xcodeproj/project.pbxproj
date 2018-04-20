@@ -14,7 +14,8 @@
 		FAE447E52088F2C200B5186A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE447E42088F2C200B5186A /* Assets.xcassets */; };
 		FAE447E82088F2C200B5186A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE447E62088F2C200B5186A /* LaunchScreen.storyboard */; };
 		FAF0CA682089600F00D0B00F /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CA672089600F00D0B00F /* Books.swift */; };
-		FAF88B9A2088FD2800B14D4B /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF88B992088FD2800B14D4B /* ServiceManager.swift */; };
+		FAF0CA6B20896DCD00D0B00F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CA6A20896DCD00D0B00F /* BaseViewController.swift */; };
+		FAF88B9A2088FD2800B14D4B /* ServicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF88B992088FD2800B14D4B /* ServicesManager.swift */; };
 		FAF88B9C2088FD9A00B14D4B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF88B9B2088FD9A00B14D4B /* APIManager.swift */; };
 		FAF88B9F2088FE6100B14D4B /* GeneralConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF88B9E2088FE6100B14D4B /* GeneralConstants.swift */; };
 /* End PBXBuildFile section */
@@ -31,7 +32,8 @@
 		FAE447E72088F2C200B5186A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAE447E92088F2C200B5186A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAF0CA672089600F00D0B00F /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
-		FAF88B992088FD2800B14D4B /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		FAF0CA6A20896DCD00D0B00F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		FAF88B992088FD2800B14D4B /* ServicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesManager.swift; sourceTree = "<group>"; };
 		FAF88B9B2088FD9A00B14D4B /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		FAF88B9E2088FE6100B14D4B /* GeneralConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,9 +91,9 @@
 				FAF0CA6620895EEE00D0B00F /* Models */,
 				FAF88B9D2088FE4A00B14D4B /* Utils */,
 				FAF88B982088FCEB00B14D4B /* ViewModels */,
+				FAF0CA6920896DAD00D0B00F /* ViewControllers */,
 				FAF88B972088FCCF00B14D4B /* Services */,
 				FAE447DD2088F2C100B5186A /* AppDelegate.swift */,
-				FAE447DF2088F2C100B5186A /* ViewController.swift */,
 				FAE447E12088F2C100B5186A /* Main.storyboard */,
 				FAE447E42088F2C200B5186A /* Assets.xcassets */,
 				FAE447E62088F2C200B5186A /* LaunchScreen.storyboard */,
@@ -108,10 +110,19 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		FAF0CA6920896DAD00D0B00F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FAE447DF2088F2C100B5186A /* ViewController.swift */,
+				FAF0CA6A20896DCD00D0B00F /* BaseViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		FAF88B972088FCCF00B14D4B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				FAF88B992088FD2800B14D4B /* ServiceManager.swift */,
+				FAF88B992088FD2800B14D4B /* ServicesManager.swift */,
 				FAF88B9B2088FD9A00B14D4B /* APIManager.swift */,
 			);
 			path = Services;
@@ -247,8 +258,9 @@
 				FAF0CA682089600F00D0B00F /* Books.swift in Sources */,
 				FAF88B9C2088FD9A00B14D4B /* APIManager.swift in Sources */,
 				FAF88B9F2088FE6100B14D4B /* GeneralConstants.swift in Sources */,
-				FAF88B9A2088FD2800B14D4B /* ServiceManager.swift in Sources */,
+				FAF88B9A2088FD2800B14D4B /* ServicesManager.swift in Sources */,
 				FAE447E02088F2C100B5186A /* ViewController.swift in Sources */,
+				FAF0CA6B20896DCD00D0B00F /* BaseViewController.swift in Sources */,
 				FAE447DE2088F2C100B5186A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
