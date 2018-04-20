@@ -8,17 +8,20 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 
 protocol ServicesProtocol {
-    func getSerialCollection(serial code: String) -> Library
+    func getSerialCollection(serial code: String,completetion:  @escaping ()->())
+    func downloadImage(url: String, completetion: @escaping ()->())
 }
 
 class ServicesManager: ServicesProtocol {
-    private var completeLibrary: Library!
+    var completeLibrary: Library?
+    var ima: UIImage?
     
-    func getSerialCollection(serial code: String) -> Library {
-        let URL = "http://application.com:8080/ords/application/archivos/coleccion/\(code)"
-        Alamofire.request(URL).responseJSON{(dataResponse) in
+    func getSerialCollection(serial code: String, completetion: @escaping ()->()) {
+        let URL = "http://susaetaon.com:8080/ords/susaetaon/archivos/coleccion/\(code)"
+        Alamofire.request(URL).responseJSON{ dataResponse in
             guard let _ = dataResponse.data else {
                 print("Error: No data to decode")
                 return
@@ -28,9 +31,25 @@ class ServicesManager: ServicesProtocol {
                 print("Error: Coudn't decode data into Library")
                 return
             }
-            
+            //let image = downloadImage(url: URL(fileURLWithPath: library.books[0].thumbnailName))
             self.completeLibrary = library
+            completetion()
         }
-        return completeLibrary
+        
+    }
+    
+    func handlerSuccess(dataResponse : DataResponse<Any>) {
+        
+    }
+    
+    func downloadImage(url: String, completetion: @escaping ()->()){
+        
+        Alamofire.request(url).responseImage { response in
+            if let image = response.result.value {
+                print("image downloaded: \(image)")
+                self.ima = image
+            }
+            completetion()
+        } 
     }
 }

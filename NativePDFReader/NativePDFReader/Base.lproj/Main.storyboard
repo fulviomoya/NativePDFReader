@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hsM-d0-nYe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nU3-M1-2tW">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -81,15 +81,15 @@
             </objects>
             <point key="canvasLocation" x="905.46875" y="133.59375"/>
         </scene>
-        <!--View Controller-->
+        <!--Validation Code View Controller-->
         <scene sceneID="4ZF-pg-Ujt">
             <objects>
-                <viewController id="nU3-M1-2tW" sceneMemberID="viewController">
+                <viewController id="nU3-M1-2tW" customClass="ValidationCodeViewController" customModule="NativePDFReader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UlQ-4q-e9g">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018 - 2019" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ds-41-woH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="2018 - 2019" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ds-41-woH">
                                 <rect key="frame" x="300" y="551" width="168" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
@@ -110,9 +110,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Validar"/>
+                                <connections>
+                                    <action selector="validateButtonTouched:" destination="nU3-M1-2tW" eventType="touchUpInside" id="pSb-qr-40h"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brand_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Yzi-pg-lOI">
                                 <rect key="frame" x="187" y="427" width="394" height="66"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="splash_background" translatesAutoresizingMaskIntoConstraints="NO" id="Tik-qn-Ykd">
+                                <rect key="frame" x="258" y="188" width="240" height="128"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -120,8 +126,10 @@
                             <constraint firstItem="3Ds-41-woH" firstAttribute="leading" secondItem="JxB-aK-0YY" secondAttribute="leading" constant="300" id="46q-se-sAf"/>
                             <constraint firstItem="Y92-Az-DIq" firstAttribute="top" secondItem="bEO-Vz-xrB" secondAttribute="bottom" constant="69" id="5FY-RR-jDm"/>
                             <constraint firstItem="JxB-aK-0YY" firstAttribute="trailing" secondItem="bEO-Vz-xrB" secondAttribute="trailing" constant="280" id="B2l-P2-TdN"/>
+                            <constraint firstItem="JxB-aK-0YY" firstAttribute="trailing" secondItem="Tik-qn-Ykd" secondAttribute="trailing" constant="270" id="DaG-Cu-cvy"/>
                             <constraint firstItem="3Ds-41-woH" firstAttribute="top" secondItem="Yzi-pg-lOI" secondAttribute="bottom" constant="58" id="GnB-F4-4Rx"/>
                             <constraint firstItem="bEO-Vz-xrB" firstAttribute="leading" secondItem="JxB-aK-0YY" secondAttribute="leading" constant="280" id="LD4-Kp-dIo"/>
+                            <constraint firstItem="Tik-qn-Ykd" firstAttribute="leading" secondItem="JxB-aK-0YY" secondAttribute="leading" constant="258" id="Oy0-Sj-MGd"/>
                             <constraint firstItem="JxB-aK-0YY" firstAttribute="trailing" secondItem="Y92-Az-DIq" secondAttribute="trailing" constant="270" id="cDm-0i-U0i"/>
                             <constraint firstItem="JxB-aK-0YY" firstAttribute="trailing" secondItem="Yzi-pg-lOI" secondAttribute="trailing" constant="187" id="dfl-i6-H5y"/>
                             <constraint firstItem="Yzi-pg-lOI" firstAttribute="leading" secondItem="JxB-aK-0YY" secondAttribute="leading" constant="187" id="gKc-Bi-hq0"/>
@@ -129,9 +137,15 @@
                             <constraint firstItem="bEO-Vz-xrB" firstAttribute="top" secondItem="3Ds-41-woH" secondAttribute="bottom" constant="75" id="pEr-gZ-zfy"/>
                             <constraint firstItem="JxB-aK-0YY" firstAttribute="bottom" secondItem="Y92-Az-DIq" secondAttribute="bottom" constant="200" id="sGp-GP-aV7"/>
                             <constraint firstItem="JxB-aK-0YY" firstAttribute="trailing" secondItem="3Ds-41-woH" secondAttribute="trailing" constant="300" id="vNY-kX-XKE"/>
+                            <constraint firstItem="Yzi-pg-lOI" firstAttribute="top" secondItem="Tik-qn-Ykd" secondAttribute="bottom" constant="111" id="x4p-Bk-RMQ"/>
+                            <constraint firstItem="Tik-qn-Ykd" firstAttribute="top" secondItem="JxB-aK-0YY" secondAttribute="top" constant="124" id="z6o-Ho-3b0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JxB-aK-0YY"/>
                     </view>
+                    <connections>
+                        <outlet property="codeTextField" destination="bEO-Vz-xrB" id="D5G-hG-g9T"/>
+                        <outlet property="thumbnailImage" destination="Tik-qn-Ykd" id="GbX-Xf-eGI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Spc-F2-z6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -173,5 +187,6 @@
     </scenes>
     <resources>
         <image name="brand_logo" width="394" height="66"/>
+        <image name="splash_background" width="533" height="288"/>
     </resources>
 </document>
