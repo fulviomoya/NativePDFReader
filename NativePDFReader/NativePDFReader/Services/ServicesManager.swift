@@ -12,10 +12,11 @@ import AlamofireImage
 
 protocol ServicesProtocol {
     func getSerialCollection(serial code: String, completion: @escaping completionHandler)
-    func downloadImageAsync(url: String)
+    func downloadImageAsync(url: String, completion: @escaping completionImageHandler)
 }
 
 typealias completionHandler = (Library) -> Void
+typealias completionImageHandler = (UIImage) -> Void
 
 class ServicesManager: ServicesProtocol {
     var completeLibrary: Library?
@@ -32,17 +33,17 @@ class ServicesManager: ServicesProtocol {
                 print("Error: Coudn't decode data into Library")
                 return
             }
-            self.completeLibrary = library
             completion(library)
         }
     }
     
-    func downloadImageAsync(url: String){
+    func downloadImageAsync(url: String, completion: @escaping completionImageHandler){
         Alamofire.request(url).responseImage { response in
-            if let image = response.result.value {
-                print("image downloaded: \(image)")
-                self.ima = image
+            guard let image = response.result.value else {
+                print("image can't be downloaded")
+                return
             }
+            completion(image)
         }
     }
 }

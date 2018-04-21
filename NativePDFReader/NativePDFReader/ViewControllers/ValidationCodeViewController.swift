@@ -9,30 +9,38 @@
 import UIKit
 
 class ValidationCodeViewController: BaseViewController {
-    var api: APIManager?
+    var model: LibraryViewModel?
     
     @IBOutlet weak var thumbnailImage: UIImageView!
     @IBOutlet weak var codeTextField: UITextField!
+    @IBOutlet weak var inProgressActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var downloadButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.api = APIManager()
-        
+        self.model = LibraryViewModel()
     }
     
     @IBAction func validateButtonTouched(_ sender: Any) {
-        api!.getLibraryBooks(identifier: codeTextField.text!){ response in 
+        model!.getLibraryBooks(identifier: codeTextField.text!){ response in
             for book in response.books {
                 print("book title: \(book.fileName)")
+                self.inProgressActivityIndicator.isHidden = false
+                self.downloadButton.isHidden = true
+                self.model!.getThumbnailImage(imageURL: book.thumbnailName,
+                                              successHandler: self.setThumbnailImage)
             }
         }
     }
+    
+    @IBAction func downloadPDFTouched(_ sender: Any) {
+        print("Let's start download ...")
+    }
+    
+    private func setThumbnailImage(_ newImage: UIImage)  {
+        self.thumbnailImage.image = newImage
+        self.inProgressActivityIndicator.isHidden = true
+        self.downloadButton.isHidden = false
+    }
 }
-
-/*for book in (self.service.completeLibrary?.books)! {
- self.service.downloadImage(url: book.thumbnailName, completetion: {
- self.thumbnailImage.image = self.service.ima
- })
- }
- */
