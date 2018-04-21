@@ -13,6 +13,7 @@ import AlamofireImage
 protocol ServicesProtocol {
     func getSerialCollection(serial code: String, completion: @escaping completionHandler)
     func downloadImageAsync(url: String, completion: @escaping completionImageHandler)
+    func downloadPDFFile(url: String) -> NSData?
 }
 
 typealias completionHandler = (Library) -> Void
@@ -45,5 +46,14 @@ class ServicesManager: ServicesProtocol {
             }
             completion(image)
         }
+    }
+    
+    func downloadPDFFile(url: String) -> NSData? {
+        guard let pdfData = NSData(contentsOf: URL(string: url)!) else {
+            print("ERROR: A problem download the pdf file")
+            return nil
+        }
+        print(">> Download success")
+        return pdfData
     }
 }
