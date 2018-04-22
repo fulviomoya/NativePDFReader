@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		20AE0C17208B8AAB0050D072 /* SensitiveConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AE0C16208B8AAB0050D072 /* SensitiveConstants.swift */; };
 		20AE0C19208BAC940050D072 /* FileManagerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AE0C18208BAC940050D072 /* FileManagerServices.swift */; };
+		20AE0C1F208CEAAF0050D072 /* BookItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AE0C1E208CEAAF0050D072 /* BookItemCollectionViewCell.swift */; };
+		20AE0C21208D11C60050D072 /* QLViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AE0C20208D11C60050D072 /* QLViewerViewController.swift */; };
 		DD3E1B54E1D9F3D2E96D0F4D /* Pods_NativePDFReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFADD07577333D2CA6ED789 /* Pods_NativePDFReader.framework */; };
 		FA96EAA6208AAD6400D6F224 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA96EAA5208AAD6400D6F224 /* LibraryViewModel.swift */; };
 		FABB90AE208A7AD700A389C6 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB90AD208A7AD700A389C6 /* BookTableViewCell.swift */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		20AE0C16208B8AAB0050D072 /* SensitiveConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitiveConstants.swift; sourceTree = "<group>"; };
 		20AE0C18208BAC940050D072 /* FileManagerServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerServices.swift; sourceTree = "<group>"; };
+		20AE0C1E208CEAAF0050D072 /* BookItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		20AE0C20208D11C60050D072 /* QLViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QLViewerViewController.swift; sourceTree = "<group>"; };
 		3C34715C18C4D2D9C1F9664C /* Pods-NativePDFReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativePDFReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NativePDFReader/Pods-NativePDFReader.debug.xcconfig"; sourceTree = "<group>"; };
 		5AFADD07577333D2CA6ED789 /* Pods_NativePDFReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NativePDFReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C924DC39B9BE9D92C7D4AD11 /* Pods-NativePDFReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NativePDFReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-NativePDFReader/Pods-NativePDFReader.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 				FAF0CA6A20896DCD00D0B00F /* BaseViewController.swift */,
 				FAE447DF2088F2C100B5186A /* PrincipalScreenViewController.swift */,
 				FAF0CA6E2089778000D0B00F /* ValidationCodeViewController.swift */,
+				20AE0C20208D11C60050D072 /* QLViewerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 				FABB90AD208A7AD700A389C6 /* BookTableViewCell.swift */,
 				FAF0CA76208A7A4800D0B00F /* LibraryViewController.swift */,
 				FABB90AF208A7B1700A389C6 /* TableConstants.swift */,
+				20AE0C1E208CEAAF0050D072 /* BookItemCollectionViewCell.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -302,8 +308,10 @@
 				20AE0C19208BAC940050D072 /* FileManagerServices.swift in Sources */,
 				FAE447E02088F2C100B5186A /* PrincipalScreenViewController.swift in Sources */,
 				FAF0CA6B20896DCD00D0B00F /* BaseViewController.swift in Sources */,
+				20AE0C21208D11C60050D072 /* QLViewerViewController.swift in Sources */,
 				20AE0C17208B8AAB0050D072 /* SensitiveConstants.swift in Sources */,
 				FAE447DE2088F2C100B5186A /* AppDelegate.swift in Sources */,
+				20AE0C1F208CEAAF0050D072 /* BookItemCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

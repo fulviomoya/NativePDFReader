@@ -9,7 +9,7 @@
 import UIKit
 import QuickLook
 
-class ValidationCodeViewController: BaseViewController, QLPreviewControllerDataSource {
+class ValidationCodeViewController: BaseViewController {
     var model: LibraryViewModel!
     var quicklook: QLPreviewController!
     
@@ -17,25 +17,27 @@ class ValidationCodeViewController: BaseViewController, QLPreviewControllerDataS
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var inProgressActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var downloadButton: UIButton!
-
+    
     @IBOutlet weak var bookButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         model = LibraryViewModel()
         quicklook = QLPreviewController()
-        quicklook.dataSource = self
+        quicklook.dataSource =  self
     }
     
     @IBAction func validateButtonTouched(_ sender: Any) {
         model!.getLibraryBooks(identifier: codeTextField.text!){ response in
-            for book in response.books {
-                print("book title: \(book.fileName)")
-                self.inProgressActivityIndicator.isHidden = false
-                self.downloadButton.isHidden = true
-                self.model!.getThumbnailImage(imageURL: book.thumbnailName,
-                                              successHandler: self.setThumbnailImage)
-            }
+            
+            self.performSegue(withIdentifier: "validationCodeToLibrarySegue", sender: response.books)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "validationCodeToLibrarySegue" {
+            // let vc = segue.destination as! LibraryViewController
+            LibraryViewController.libraryBooks = sender as? [Book]
         }
     }
     
@@ -58,7 +60,7 @@ class ValidationCodeViewController: BaseViewController, QLPreviewControllerDataS
 }
 
 // Quicklook data source
-extension ValidationCodeViewController {
+extension ValidationCodeViewController: QLPreviewControllerDataSource {
     func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
         return 1
     }
@@ -69,3 +71,4 @@ extension ValidationCodeViewController {
         return NSURL(fileURLWithPath: fileNamePath)
     }
 }
+

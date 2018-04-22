@@ -7,42 +7,51 @@
 //
 
 import UIKit
+import QuickLook
 
 class BookTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    var books: [Book]!
+    let service = ServicesManager()
     override func awakeFromNib() {
         super.awakeFromNib()
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        books = LibraryViewController.libraryBooks!
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
 }
 
 // UICollectionViewDataSource
-
 extension BookTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Int(TableConstants.totalItem)
+        return books.count  //Int(TableConstants.totalItem)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "BookCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCell", for: indexPath) as? BookItemCollectionViewCell
+        service.downloadImageAsync(url: books[indexPath.row].thumbnailName) { image in
+            cell?.thumbnailImage.image = image
+            cell?.activityIndicator.isHidden = true
+            cell?.downloadButton.isHidden = false
+        }
+        return cell!
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.books[indexPath.row].fileName
+    }
 }
 
 // UICollectionViewDelegateFlowLayout
 extension BookTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth = TableConstants.getItemWidth(boundWidth: collectionView.bounds.size.width)
-        return CGSize(width: itemWidth, height: itemWidth*1.45) //Same because is a square
+        return CGSize(width: itemWidth + 100, height: itemWidth*2.2) //Same because is a square
     }
 }

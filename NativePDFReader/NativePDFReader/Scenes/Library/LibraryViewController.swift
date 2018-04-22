@@ -12,6 +12,8 @@ class LibraryViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    static var libraryBooks: [Book]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,7 +49,7 @@ extension LibraryViewController: UITableViewDelegate {
             let itemHeight = TableConstants.getItemWidth(boundWidth: tableView.bounds.size.width)
             let totalRow = ceil(TableConstants.totalItem / TableConstants.column)
             
-            let totalTopButtonOffset = TableConstants.offset + TableConstants.offset
+            let totalTopButtonOffset = TableConstants.offset * 2
             
             let totalSpacing = CGFloat(totalRow - 1) * TableConstants.offset
             let totalHeight = ((itemHeight * CGFloat(totalRow)) + totalTopButtonOffset + totalSpacing)

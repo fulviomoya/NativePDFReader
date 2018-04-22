@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class TableConstants {
-    static let totalItem: CGFloat = 27
-    static let column: CGFloat = 5
+    static let totalItem: CGFloat = 7
+    static let column: CGFloat = 4
     
     static let minLineSpacing: CGFloat = 1
     static let minItemSpacing: CGFloat = 1
