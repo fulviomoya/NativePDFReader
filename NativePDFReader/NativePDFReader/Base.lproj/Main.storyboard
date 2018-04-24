@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -119,75 +118,26 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brand_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Yzi-pg-lOI">
                                 <rect key="frame" x="187" y="532" width="394" height="66"/>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="splash_background" translatesAutoresizingMaskIntoConstraints="NO" id="Tik-qn-Ykd">
-                                <rect key="frame" x="268" y="219" width="232" height="296"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Tik-qn-Ykd" secondAttribute="height" multiplier="11:14" id="6FT-qm-0ol"/>
-                                </constraints>
-                            </imageView>
-                            <button hidden="YES" opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GB6-qG-r61">
-                                <rect key="frame" x="268.5" y="466" width="232" height="49"/>
-                                <color key="backgroundColor" red="0.0" green="0.70599003635833335" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="9s0-Ld-DWr"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                <state key="normal" title="Download">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="downloadPDFTouched:" destination="nU3-M1-2tW" eventType="touchUpInside" id="Gkj-ni-GQH"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ksZ-MG-Hbq">
-                                <rect key="frame" x="366" y="349" width="37" height="37"/>
-                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
-                            <button hidden="YES" opaque="NO" alpha="0.23000000000000001" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wge-3v-82E">
-                                <rect key="frame" x="270" y="219" width="231" height="296"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="showBook:" destination="nU3-M1-2tW" eventType="touchUpInside" id="ahz-uT-buu"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="JxB-aK-0YY" firstAttribute="trailing" secondItem="Tik-qn-Ykd" secondAttribute="trailing" constant="268" id="3XG-pv-O4R"/>
                             <constraint firstItem="3Ds-41-woH" firstAttribute="leading" secondItem="JxB-aK-0YY" secondAttribute="leading" constant="300" id="46q-se-sAf"/>
                             <constraint firstItem="Y92-Az-DIq" firstAttribute="top" secondItem="bEO-Vz-xrB" secondAttribute="bottom" constant="42" id="5FY-RR-jDm"/>
-                            <constraint firstItem="Wge-3v-82E" firstAttribute="top" secondItem="JxB-aK-0YY" secondAttribute="top" constant="155" id="6b3-LD-fSg"/>
-                            <constraint firstItem="JxB-aK-0YY" firstAttribute="trailing" secondItem="Wge-3v-82E" secondAttribute="trailing" constant="267" id="8a3-2I-xaH"/>
                             <constraint firstItem="JxB-aK-0YY" firstAttribute="trailing" secondItem="bEO-Vz-xrB" secondAttribute="trailing" constant="280" id="B2l-P2-TdN"/>
-                            <constraint firstItem="Wge-3v-82E" firstAttribute="leading" secondItem="JxB-aK-0YY" secondAttribute="leading" constant="270" id="FsQ-Uu-ZrF"/>
                             <constraint firstItem="3Ds-41-woH" firstAttribute="top" secondItem="Yzi-pg-lOI" secondAttribute="bottom" constant="16" id="GnB-F4-4Rx"/>
-                            <constraint firstItem="GB6-qG-r61" firstAttribute="centerX" secondItem="ksZ-MG-Hbq" secondAttribute="centerX" id="HBd-rp-N3K"/>
-                            <constraint firstItem="GB6-qG-r61" firstAttribute="width" secondItem="Tik-qn-Ykd" secondAttribute="width" id="L6Y-tR-NHN"/>
                             <constraint firstItem="bEO-Vz-xrB" firstAttribute="leading" secondItem="JxB-aK-0YY" secondAttribute="leading" constant="280" id="LD4-Kp-dIo"/>
-                            <constraint firstItem="Tik-qn-Ykd" firstAttribute="centerX" secondItem="UlQ-4q-e9g" secondAttribute="centerX" id="SRQ-W9-BBu"/>
-                            <constraint firstItem="GB6-qG-r61" firstAttribute="centerX" secondItem="Yzi-pg-lOI" secondAttribute="centerX" id="b8S-HB-asf"/>
                             <constraint firstItem="JxB-aK-0YY" firstAttribute="trailing" secondItem="Y92-Az-DIq" secondAttribute="trailing" constant="270" id="cDm-0i-U0i"/>
                             <constraint firstItem="JxB-aK-0YY" firstAttribute="trailing" secondItem="Yzi-pg-lOI" secondAttribute="trailing" constant="187" id="dfl-i6-H5y"/>
                             <constraint firstItem="Yzi-pg-lOI" firstAttribute="leading" secondItem="JxB-aK-0YY" secondAttribute="leading" constant="187" id="gKc-Bi-hq0"/>
                             <constraint firstItem="Y92-Az-DIq" firstAttribute="leading" secondItem="JxB-aK-0YY" secondAttribute="leading" constant="270" id="gcB-ak-Jo9"/>
-                            <constraint firstItem="GB6-qG-r61" firstAttribute="centerY" secondItem="ksZ-MG-Hbq" secondAttribute="centerY" constant="123" id="nUa-m6-YW2"/>
                             <constraint firstItem="bEO-Vz-xrB" firstAttribute="top" secondItem="3Ds-41-woH" secondAttribute="bottom" constant="39" id="pEr-gZ-zfy"/>
                             <constraint firstItem="JxB-aK-0YY" firstAttribute="bottom" secondItem="Y92-Az-DIq" secondAttribute="bottom" constant="200" id="sGp-GP-aV7"/>
-                            <constraint firstItem="Tik-qn-Ykd" firstAttribute="top" secondItem="JxB-aK-0YY" secondAttribute="top" constant="155" id="uHV-zH-fXZ"/>
                             <constraint firstItem="JxB-aK-0YY" firstAttribute="trailing" secondItem="3Ds-41-woH" secondAttribute="trailing" constant="300" id="vNY-kX-XKE"/>
-                            <constraint firstItem="GB6-qG-r61" firstAttribute="top" secondItem="JxB-aK-0YY" secondAttribute="top" constant="402" id="xYT-Fg-YS4"/>
-                            <constraint firstItem="Yzi-pg-lOI" firstAttribute="top" secondItem="Wge-3v-82E" secondAttribute="bottom" constant="17" id="yed-BT-1dU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JxB-aK-0YY"/>
                     </view>
                     <connections>
-                        <outlet property="bookButton" destination="Wge-3v-82E" id="vPW-iX-ulr"/>
                         <outlet property="codeTextField" destination="bEO-Vz-xrB" id="D5G-hG-g9T"/>
-                        <outlet property="downloadButton" destination="GB6-qG-r61" id="YQf-Rg-HLl"/>
-                        <outlet property="inProgressActivityIndicator" destination="ksZ-MG-Hbq" id="0zo-u4-rxe"/>
-                        <outlet property="thumbnailImage" destination="Tik-qn-Ykd" id="GbX-Xf-eGI"/>
                         <segue destination="nUl-eT-wDA" kind="showDetail" identifier="validationCodeToLibrarySegue" id="BPp-VD-gW7"/>
                     </connections>
                 </viewController>
@@ -230,15 +180,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookCollectionCell" rowHeight="271" id="dCr-5d-ehm" customClass="BookTableViewCell" customModule="NativePDFReader" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="768" height="271"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BookCollectionCell" rowHeight="935" id="dCr-5d-ehm" customClass="BookTableViewCell" customModule="NativePDFReader" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="768" height="935"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dCr-5d-ehm" id="atb-ew-DWk">
-                                            <rect key="frame" x="0.0" y="0.0" width="768" height="270.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="934.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VVa-Nr-1p2">
-                                                    <rect key="frame" x="60" y="20" width="648" height="240.5"/>
+                                                    <rect key="frame" x="60" y="20" width="648" height="880"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Omi-1B-Hcg">
                                                         <size key="itemSize" width="165" height="240"/>
@@ -303,10 +253,10 @@
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="VVa-Nr-1p2" secondAttribute="bottom" constant="10" id="Ffy-Fv-pBO"/>
-                                                <constraint firstItem="VVa-Nr-1p2" firstAttribute="top" secondItem="atb-ew-DWk" secondAttribute="top" constant="20" id="QQo-vL-Jat"/>
-                                                <constraint firstItem="VVa-Nr-1p2" firstAttribute="leading" secondItem="atb-ew-DWk" secondAttribute="leading" constant="60" id="lSM-Jc-Ky8"/>
-                                                <constraint firstAttribute="trailing" secondItem="VVa-Nr-1p2" secondAttribute="trailing" constant="60" id="nBQ-Ul-sIS"/>
+                                                <constraint firstItem="VVa-Nr-1p2" firstAttribute="leading" secondItem="atb-ew-DWk" secondAttribute="leadingMargin" constant="45" id="Dr8-vi-vQa"/>
+                                                <constraint firstItem="VVa-Nr-1p2" firstAttribute="top" secondItem="atb-ew-DWk" secondAttribute="topMargin" constant="9" id="U3j-6m-bxa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="VVa-Nr-1p2" secondAttribute="bottom" constant="24" id="U6I-Iq-MxL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="VVa-Nr-1p2" secondAttribute="trailing" constant="45" id="tTU-Ba-Py4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

@@ -13,13 +13,16 @@ class BookTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var books: [Book]!
-    let service = ServicesManager()
+    
+    let service = ServiceManagerFake()
     override func awakeFromNib() {
         super.awakeFromNib()
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        books = LibraryViewController.libraryBooks!
+        service.getSerialCollection(serial: (LibraryViewController.validationCode)!) { libary in
+            self.books = libary.books
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -44,7 +47,7 @@ extension BookTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.books[indexPath.row].fileName
+       // self.books[indexPath.row].fileName
     }
 }
 

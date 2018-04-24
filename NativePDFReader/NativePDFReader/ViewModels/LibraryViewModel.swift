@@ -13,7 +13,7 @@ class LibraryViewModel {
     let fileManager: FileManagerServices!
     
     init() {
-        service = ServicesManager()
+        service = ServiceManagerFake()
         fileManager = FileManagerServices()
     }
     

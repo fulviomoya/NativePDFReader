@@ -12,7 +12,8 @@ class LibraryViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    static var libraryBooks: [Book]?
+    //static var libraryBooks: [Book]?
+    static var validationCode: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()

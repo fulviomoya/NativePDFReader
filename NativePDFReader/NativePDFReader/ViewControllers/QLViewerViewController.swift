@@ -16,7 +16,7 @@ class QLViewerViewController: UIViewController {
         super.viewDidLoad()
         
         quicklook.dataSource =  self
-       // present(quicklook, animated: true, completion: nil)
+        present(quicklook, animated: true, completion: nil)
     }
 }
 
