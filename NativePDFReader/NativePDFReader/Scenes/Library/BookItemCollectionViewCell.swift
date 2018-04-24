@@ -17,12 +17,18 @@ class BookItemCollectionViewCell: UICollectionViewCell {
     
     @IBAction func downloadButtonTouched(_ sender: Any) {
         print("Let's start download ... \(bookSelectedName!)")
-        for state: UIControlState in [.normal, .highlighted, .disabled, .selected, .focused, .application, .reserved] {
-            downloadButton.setTitle("Downloading...", for: state)
-        }
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.color = UIColor.white
         
-        let wasSuccess = LibraryViewModel().savePDFToLocalFileSystem(path: SensitiveConstants.TEMP_PATH , fileName:  bookSelectedName!)
-        print("result: \(String(describing: wasSuccess))")
-        downloadButton.isHidden = true
+        self.downloadButton.setTitle("Downloading...", for: .normal)
+        
+        DispatchQueue.global(qos: .background).async {
+            let wasSuccess = LibraryViewModel().savePDFToLocalFileSystem(path: SensitiveConstants.TEMP_PATH,
+                                                                         fileName:  self.bookSelectedName!)
+            
+            print("result: \(String(describing: wasSuccess))")
+            self.downloadButton.isHidden = true
+            self.activityIndicator.isHidden = true
+        }
     }
 }

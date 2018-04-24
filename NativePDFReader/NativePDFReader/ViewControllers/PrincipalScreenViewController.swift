@@ -13,4 +13,9 @@ class ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad() 
     }
+    @IBOutlet weak var testButton: UIButton!
+    
+    @IBAction func testButtonTouched(_ sender: Any) {
+        testButton.setTitle("Touched.!", for: .normal)
+    }
 }
