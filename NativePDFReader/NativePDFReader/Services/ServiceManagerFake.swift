@@ -25,6 +25,7 @@ class ServiceManagerFake: ServicesManager {
     }
     
     override func downloadPDFFile(url: String) -> NSData? {
+        let url = GeneralConstants.DUMMY_PDF
         return super.downloadPDFFile(url: url)
     }
     

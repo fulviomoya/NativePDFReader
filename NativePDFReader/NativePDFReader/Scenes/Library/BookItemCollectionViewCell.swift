@@ -17,11 +17,11 @@ class BookItemCollectionViewCell: UICollectionViewCell {
     
     @IBAction func downloadButtonTouched(_ sender: Any) {
         print("Let's start download ... \(bookSelectedName!)")
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.color = UIColor.white
+        activityIndicator.isHidden = false
+        activityIndicator.color = UIColor.white
         
-        self.downloadButton.setTitle("Downloading...", for: .normal)
-        
+        downloadButton.setTitle("Downloading...", for: .normal)
+        self.layoutIfNeeded()
         DispatchQueue.global(qos: .background).async {
             let wasSuccess = LibraryViewModel().savePDFToLocalFileSystem(path: SensitiveConstants.TEMP_PATH,
                                                                          fileName:  self.bookSelectedName!)
