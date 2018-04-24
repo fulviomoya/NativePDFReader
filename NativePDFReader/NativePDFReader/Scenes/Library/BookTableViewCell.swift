@@ -12,6 +12,8 @@ import QuickLook
 class BookTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    let quicklook = QLPreviewController()
     var books: [Book]!
     
     let service = ServiceManagerFake()
@@ -20,6 +22,8 @@ class BookTableViewCell: UITableViewCell {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        quicklook.dataSource =  self
+        
         service.getSerialCollection(serial: (LibraryViewController.validationCode)!) { libary in
             self.books = libary.books
         }
@@ -47,7 +51,8 @@ extension BookTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // self.books[indexPath.row].fileName
+        books[indexPath.row]
+       
     }
 }
 
@@ -56,5 +61,18 @@ extension BookTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth = TableConstants.getItemWidth(boundWidth: collectionView.bounds.size.width)
         return CGSize(width: itemWidth + 100, height: itemWidth*2.2) //Same because is a square
+    }
+}
+
+// Quicklook data source
+extension BookTableViewCell: QLPreviewControllerDataSource {
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
+    
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        let fileNamePath = FileManagerServices().read(file: "")
+        print("item: \(fileNamePath)")
+        return NSURL(fileURLWithPath: fileNamePath)
     }
 }

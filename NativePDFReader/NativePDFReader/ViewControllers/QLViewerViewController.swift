@@ -14,9 +14,12 @@ class QLViewerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         quicklook.dataSource =  self
-        present(quicklook, animated: true, completion: nil)
+        self.Touched(quicklook)
+    }
+    
+    @IBAction func Touched(_ sender: Any) {
+         present(quicklook, animated: true, completion: nil)
     }
 }
 
