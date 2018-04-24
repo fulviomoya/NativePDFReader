@@ -2,20 +2,24 @@ PODS:
   - Alamofire (4.7.2)
   - AlamofireImage (3.3.1):
     - Alamofire (~> 4.5)
+  - PDFReader (2.5.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireImage (~> 3.3)
+  - PDFReader
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AlamofireImage
+    - PDFReader
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
+  PDFReader: 2c4a845d0560f33221cf911516e3b700967680f6
 
-PODFILE CHECKSUM: c8e8e7e56ec288e8a2cc6590bc425b5369e49c6c
+PODFILE CHECKSUM: f33faffe84a19eb7b14098016120129745e9dd56
 
 COCOAPODS: 1.5.0

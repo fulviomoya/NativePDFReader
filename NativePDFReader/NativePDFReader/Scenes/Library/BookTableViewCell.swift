@@ -8,6 +8,7 @@
 
 import UIKit
 import QuickLook
+import PDFReader
 
 class BookTableViewCell: UITableViewCell {
     
@@ -51,8 +52,12 @@ extension BookTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        books[indexPath.row]
-       
+        let remotePDFDocumentURL = URL(string: GeneralConstants.DUMMY_PDF)!
+        let reader = PDFViewController.createNew(with: PDFDocument(url: remotePDFDocumentURL)!)
+        
+        if let myViewController = parentViewController as? LibraryViewController {
+            myViewController.navigationController!.pushViewController(reader, animated: true)
+        }
     }
 }
 
@@ -74,5 +79,18 @@ extension BookTableViewCell: QLPreviewControllerDataSource {
         let fileNamePath = FileManagerServices().read(file: "")
         print("item: \(fileNamePath)")
         return NSURL(fileURLWithPath: fileNamePath)
+    }
+}
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+        }
+        return nil
     }
 }

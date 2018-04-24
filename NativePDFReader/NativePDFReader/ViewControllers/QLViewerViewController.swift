@@ -7,31 +7,19 @@
 //
 
 import UIKit
-import QuickLook
+import PDFReader
 
 class QLViewerViewController: UIViewController {
-    let quicklook = QLPreviewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        quicklook.dataSource =  self
-        self.Touched(quicklook)
+        let remotePDFDocumentURL = URL(string: GeneralConstants.DUMMY_PDF)!
+        let document = PDFDocument(url: remotePDFDocumentURL)!
+        let reader = PDFViewController.createNew(with: document, title: "Favorite Cupcakes")
+        self.navigationController!.pushViewController(reader, animated: true)
     }
     
-    @IBAction func Touched(_ sender: Any) {
-         present(quicklook, animated: true, completion: nil)
-    }
-}
-
-// Quicklook data source
-extension QLViewerViewController: QLPreviewControllerDataSource {
-    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
-        return 1
-    }
-    
-    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        let fileNamePath = FileManagerServices().read(file: "")
-        print("item: \(fileNamePath)")
-        return NSURL(fileURLWithPath: fileNamePath)
+    @IBAction func touched(_ sender: Any) {
+       
     }
 }
