@@ -21,7 +21,7 @@ class BookItemCollectionViewCell: UICollectionViewCell {
             downloadButton.setTitle("Downloading...", for: state)
         }
         
-        let wasSuccess = LibraryViewModel().savePDFToLocalFileSystem(pdfURL: SensitiveConstants.FAKE_BASE + bookSelectedName!)
+        let wasSuccess = LibraryViewModel().savePDFToLocalFileSystem(path: SensitiveConstants.TEMP_PATH , fileName:  bookSelectedName!)
         print("result: \(String(describing: wasSuccess))")
         downloadButton.isHidden = true
     }

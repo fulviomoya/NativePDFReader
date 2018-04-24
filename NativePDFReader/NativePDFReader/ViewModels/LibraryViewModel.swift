@@ -25,9 +25,9 @@ class LibraryViewModel {
         self.service.downloadImageAsync(url: imageURL, completion: successHandler)
     }
     
-    func savePDFToLocalFileSystem(pdfURL: String) -> Bool {
-        if let pdf = self.service.downloadPDFFile(url: pdfURL) {
-            if fileManager.writeNew(file: "myPDF.pdf", data: pdf) {
+    func savePDFToLocalFileSystem(path: String, fileName: String ) -> Bool {
+        if let pdf = self.service.downloadPDFFile(url: path+fileName) {
+            if fileManager.writeNew(file: fileName, data: pdf) {
                 print(">> Save file correct")
                 return true
             }

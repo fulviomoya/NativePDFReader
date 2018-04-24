@@ -21,7 +21,7 @@ class ServiceManagerFake: ServicesManager {
     }
     
     override func downloadImageAsync(url: String, completion: @escaping completionImageHandler) {
-        super.downloadImageAsync(url: SensitiveConstants.FAKE_BASE + url, completion: completion)
+        super.downloadImageAsync(url: SensitiveConstants.TEMP_PATH + url, completion: completion)
     }
     
     override func downloadPDFFile(url: String) -> NSData? {
