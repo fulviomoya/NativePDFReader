@@ -13,10 +13,15 @@ class BookItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var downloadButton: UIButton!
     
+    var bookSelectedName: String?
+    
     @IBAction func downloadButtonTouched(_ sender: Any) {
-        print("Let's start download ...")
-        let model = LibraryViewModel()
-        let wasSuccess = model.savePDFToLocalFileSystem(pdfURL: GeneralConstants.DUMMY_PDF)
+        print("Let's start download ... \(bookSelectedName!)")
+        for state: UIControlState in [.normal, .highlighted, .disabled, .selected, .focused, .application, .reserved] {
+            downloadButton.setTitle("Downloading...", for: state)
+        }
+        
+        let wasSuccess = LibraryViewModel().savePDFToLocalFileSystem(pdfURL: SensitiveConstants.FAKE_BASE + bookSelectedName!)
         print("result: \(String(describing: wasSuccess))")
         downloadButton.isHidden = true
     }

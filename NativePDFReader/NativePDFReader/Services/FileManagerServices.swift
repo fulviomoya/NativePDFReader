@@ -15,11 +15,11 @@ class FileManagerServices {
     init() {
         fileManager = FileManager.default
         documentDirectory = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil,
-                                                create: false)
+                                                 create: false)
     }
     
     func writeNew(file fileName: String, data: NSData) -> Bool{
-        //  let pathWithNameFile = documentDirectory.lastPathComponent + fileName
+        print("File saved on device disk")
         let fileURL = documentDirectory?.appendingPathComponent(fileName)
         
         return data.write(to: fileURL!, atomically: true)
@@ -27,10 +27,12 @@ class FileManagerServices {
     
     func read(file fileName: String) -> String {
         let currentDirectoryFileNames = try! fileManager.contentsOfDirectory(at: documentDirectory!, includingPropertiesForKeys: nil,
-                                                                        options: .skipsHiddenFiles)
-        //print(currentDirectoryFileNames)
-        //FIXME: make a search file to indentify by name
+                                                                             options: .skipsHiddenFiles)
+        for file in currentDirectoryFileNames {
+            if file.lastPathComponent == fileName {
+                return file.absoluteString
+            }
+        }
         return currentDirectoryFileNames[0].absoluteString
-
     }
 }

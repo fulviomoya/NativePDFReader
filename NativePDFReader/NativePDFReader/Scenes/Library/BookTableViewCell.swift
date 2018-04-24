@@ -11,27 +11,22 @@ import QuickLook
 import PDFReader
 
 class BookTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let quicklook = QLPreviewController()
     var books: [Book]!
     
     let service = ServiceManagerFake()
+    let fmanager = FileManagerServices()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        quicklook.dataSource =  self
         
         service.getSerialCollection(serial: (LibraryViewController.validationCode)!) { libary in
             self.books = libary.books
         }
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     }
 }
 
@@ -47,13 +42,15 @@ extension BookTableViewCell: UICollectionViewDataSource {
             cell?.thumbnailImage.image = image
             cell?.activityIndicator.isHidden = true
             cell?.downloadButton.isHidden = false
+            cell?.bookSelectedName = self.books[indexPath.row].fileName
         }
         return cell!
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let remotePDFDocumentURL = URL(string: GeneralConstants.DUMMY_PDF)!
-        let reader = PDFViewController.createNew(with: PDFDocument(url: remotePDFDocumentURL)!)
+        let fileName: String = books[indexPath.row].fileName
+        let remotePDFDocumentURL = URL(string: fmanager.read(file: fileName))!
+        let reader = PDFViewController.createNew(with: PDFDocument(url: remotePDFDocumentURL)!, title: fileName)
         
         if let myViewController = parentViewController as? LibraryViewController {
             myViewController.navigationController!.pushViewController(reader, animated: true)
@@ -66,19 +63,6 @@ extension BookTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth = TableConstants.getItemWidth(boundWidth: collectionView.bounds.size.width)
         return CGSize(width: itemWidth + 100, height: itemWidth*2.2) //Same because is a square
-    }
-}
-
-// Quicklook data source
-extension BookTableViewCell: QLPreviewControllerDataSource {
-    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
-        return 1
-    }
-    
-    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        let fileNamePath = FileManagerServices().read(file: "")
-        print("item: \(fileNamePath)")
-        return NSURL(fileURLWithPath: fileNamePath)
     }
 }
 
