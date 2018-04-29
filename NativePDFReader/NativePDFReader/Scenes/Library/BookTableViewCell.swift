@@ -7,15 +7,16 @@
 //
 
 import UIKit
-import QuickLook
 import PDFReader
 
 class BookTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var books: [Book]!
+    var books2: [Book]!
     
-    let service = ServiceManagerFake()
+    let service =  ServiceManagerFake() //
+    let services2 = ServicesManager()
     let fmanager = FileManagerServices()
     
     override func awakeFromNib() {
@@ -23,6 +24,10 @@ class BookTableViewCell: UITableViewCell {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        services2.getSerialCollection(serial: (LibraryViewController.validationCode)!) { libary in
+            self.books = libary.books
+        }
         
         service.getSerialCollection(serial: (LibraryViewController.validationCode)!) { libary in
             self.books = libary.books
@@ -33,7 +38,7 @@ class BookTableViewCell: UITableViewCell {
 // UICollectionViewDataSource
 extension BookTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return books.count  //Int(TableConstants.totalItem)
+        return 4// books.count  //Int(TableConstants.totalItem)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

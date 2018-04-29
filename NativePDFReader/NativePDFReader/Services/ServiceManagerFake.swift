@@ -21,7 +21,8 @@ class ServiceManagerFake: ServicesManager {
     }
     
     override func downloadImageAsync(url: String, completion: @escaping completionImageHandler) {
-        super.downloadImageAsync(url: SensitiveConstants.TEMP_PATH + url, completion: completion)
+       // super.downloadImageAsync(url: SensitiveConstants.TEMP_PATH + url, completion: completion)
+         super.downloadImageAsync(url: url, completion: completion)
     }
     
     override func downloadPDFFile(url: String) -> NSData? {
@@ -29,10 +30,10 @@ class ServiceManagerFake: ServicesManager {
     }
     
     func createAFakeBook() -> [Book] {
-        let book  = Book(id: "1234", thumbnailName: "978994512513.png", fileName: "978994512513.pdf", expirationDate: "NoNe")
-        let book2 = Book(id: "1234", thumbnailName: "978994512514.png", fileName: "978994512514.pdf", expirationDate: "NoNe")
-        let book3 = Book(id: "1234", thumbnailName: "978994512517.png", fileName: "978994512517.pdf", expirationDate: "NoNe")
-        let book4 = Book(id: "1234", thumbnailName: "978994512518.png", fileName: "978994512518.pdf", expirationDate: "NoNe")
+        let book  = Book(id: "1234", thumbnailName: "http://susaetaon.com:8080/portadas/978994512513.png", fileName: "978994512513.pdf", expirationDate: "NoNe")
+        let book2 = Book(id: "1234", thumbnailName: "http://susaetaon.com:8080/portadas/978994512514.png", fileName: "978994512514.pdf", expirationDate: "NoNe")
+        let book3 = Book(id: "1234", thumbnailName: "http://susaetaon.com:8080/portadas/978994512517.png", fileName: "978994512517.pdf", expirationDate: "NoNe")
+        let book4 = Book(id: "1234", thumbnailName: "http://susaetaon.com:8080/portadas/978994512518.png", fileName: "978994512518.pdf", expirationDate: "NoNe")
      
         return [book, book2, book3, book4]
     }

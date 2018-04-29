@@ -7,11 +7,9 @@
 //
 
 import UIKit
-import QuickLook
 
 class ValidationCodeViewController: BaseViewController {
     var model: LibraryViewModel!
-    var quicklook: QLPreviewController!
     
     @IBOutlet weak var codeTextField: UITextField!
 
