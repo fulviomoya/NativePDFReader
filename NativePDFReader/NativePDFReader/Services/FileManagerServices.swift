@@ -21,7 +21,7 @@ class FileManagerServices {
     func writeNew(file fileName: String, data: Data) -> Bool{
         let fileURL = documentDirectory?.appendingPathComponent(fileName)
         do {
-            try data.write(to: fileURL!, options: .atomic)
+            try data.write(to: fileURL!, options: .atomicWrite)
             print("File saved on device disk")
         } catch {
             return false
@@ -29,14 +29,28 @@ class FileManagerServices {
         return true
     }
     
-    func read(file fileName: String) -> String {
-        let currentDirectoryFileNames = try! fileManager.contentsOfDirectory(at: documentDirectory!, includingPropertiesForKeys: nil,
-                                                                             options: .skipsHiddenFiles)
-        for file in currentDirectoryFileNames {
+    func getPathOf(file fileName: String) -> String {
+        for file in getLocalFileRoute() {
             if file.lastPathComponent == fileName {
                 return file.absoluteString
             }
         }
-        return currentDirectoryFileNames[0].absoluteString
+        //Fix that what return when no exist documents
+        return getLocalFileRoute()[0].absoluteString
+    }
+    
+    func getLocalFileRoute() -> [URL] {
+        let contentDirectory = try! fileManager.contentsOfDirectory(at: documentDirectory!, includingPropertiesForKeys: nil,
+                                                     options: .skipsHiddenFiles)
+        return contentDirectory
+    }
+    
+    func getNameDocumentsOnDirectory() -> [String] {
+        var fileNames: [String] = []
+        
+        for file in getLocalFileRoute() {
+            fileNames.append(file.absoluteURL.lastPathComponent)
+        }
+        return fileNames
     }
 }

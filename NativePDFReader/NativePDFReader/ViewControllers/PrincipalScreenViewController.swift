@@ -9,20 +9,22 @@
 import UIKit
 
 class ViewController: BaseViewController {
+    @IBOutlet weak var libraryButton: UIButton!
     
-    @IBOutlet weak var image: UIImageView!
     override func viewDidLoad() {
-        super.viewDidLoad() 
+        super.viewDidLoad()
+        if FileManagerServices().getNameDocumentsOnDirectory().count > 0  &&
+            UserDefaults.standard.object(forKey: "SerialValidCode") != nil {
+            libraryButton.isEnabled = true
+        }
     }
     
-    @IBAction func testButtonTouched(_ sender: Any) {
-        let download = DownloadServices()
-        download.startDownload(url: "http://susaetaon.com:8080/ords/susaetaon/archivos/descargas/1,99")
-       
-        let fmanager = FileManagerServices()
-        let imageName = fmanager.read(file: "newPhoto.png")
+    /*@IBAction func testButtonTouched(_ sender: Any) {
+        DownloadServices().startDownload(url: "http://susaetaon.com:8080/ords/susaetaon/archivos/descargas/1,99")
+        
+        let imageName = FileManagerServices().getPathOf(file: "newPhoto.png")
         
         image.image = UIImage(contentsOfFile: imageName)
         loadViewIfNeeded()
-    }
+    }*/
 }

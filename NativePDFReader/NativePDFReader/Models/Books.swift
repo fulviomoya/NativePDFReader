@@ -21,6 +21,7 @@ struct Book: Decodable {
     let thumbnailName: String
     let fileName: String
     let expirationDate: String
+    let isDownloaded: Bool? = false
     
     enum CodingKeys: String, CodingKey {
         case id = "articulo"

@@ -153,9 +153,9 @@
 		FAF0CA75208A7A2100D0B00F /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				FABB90AD208A7AD700A389C6 /* BookTableViewCell.swift */,
-				FAF0CA76208A7A4800D0B00F /* LibraryViewController.swift */,
 				FABB90AF208A7B1700A389C6 /* TableConstants.swift */,
+				FAF0CA76208A7A4800D0B00F /* LibraryViewController.swift */,
+				FABB90AD208A7AD700A389C6 /* BookTableViewCell.swift */,
 				20AE0C1E208CEAAF0050D072 /* BookItemCollectionViewCell.swift */,
 			);
 			path = Library;
@@ -165,8 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				FAF88B992088FD2800B14D4B /* ServicesManager.swift */,
-				20AE0C18208BAC940050D072 /* FileManagerServices.swift */,
 				FA396C80208EB78E0052CB10 /* ServiceManagerFake.swift */,
+				20AE0C18208BAC940050D072 /* FileManagerServices.swift */,
 				20A6686F209695B8000A6195 /* DownloadServices.swift */,
 			);
 			path = Services;

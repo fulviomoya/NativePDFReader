@@ -15,7 +15,7 @@ class BookTableViewCell: UITableViewCell {
     var books: [Book]!
     var books2: [Book]!
     
-    let service =  ServiceManagerFake() //
+    let service =  ServiceManagerFake()
     let services2 = ServicesManager()
     let fmanager = FileManagerServices()
     
@@ -25,11 +25,19 @@ class BookTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        services2.getSerialCollection(serial: (LibraryViewController.validationCode)!) { libary in
+        var codeSerial: String
+        
+        if let validationCode = LibraryViewController.validationCode {
+             codeSerial = validationCode
+        } else {
+             codeSerial = UserDefaults.standard.object(forKey: "SerialValidCode") as! String
+        }
+        
+        services2.getSerialCollection(serial: codeSerial) { libary in
             self.books = libary.books
         }
         
-        service.getSerialCollection(serial: (LibraryViewController.validationCode)!) { libary in
+        service.getSerialCollection(serial: codeSerial) { libary in
             self.books = libary.books
         }
     }
@@ -46,15 +54,24 @@ extension BookTableViewCell: UICollectionViewDataSource {
         service.downloadImageAsync(url: books[indexPath.row].thumbnailName) { image in
             cell?.thumbnailImage.image = image
             cell?.activityIndicator.isHidden = true
-            cell?.downloadButton.isHidden = false
             cell?.bookSelectedName = self.books[indexPath.row].fileName
+            cell?.downloadButton.isHidden = false
+             
+            for name in FileManagerServices().getNameDocumentsOnDirectory() {
+                print(" book \(self.books[indexPath.row].fileName) - file \(name)")
+                if name == self.books[indexPath.row].fileName {
+                    cell?.downloadButton.isHidden = true
+                    print("> Positivo")
+                    break
+                }
+            }
         }
         return cell!
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let fileName: String = books[indexPath.row].fileName
-        let remotePDFDocumentURL = URL(string: fmanager.read(file: fileName))!
+        let remotePDFDocumentURL = URL(string: fmanager.getPathOf(file: fileName))!
         let reader = PDFViewController.createNew(with: PDFDocument(url: remotePDFDocumentURL)!, title: fileName)
         
         if let myViewController = parentViewController as? LibraryViewController {

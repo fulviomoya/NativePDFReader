@@ -23,7 +23,7 @@ class BookItemCollectionViewCell: UICollectionViewCell {
         downloadButton.setTitle("Downloading...", for: .normal)
         self.layoutIfNeeded()
         DispatchQueue.global(qos: .background).async {
-            let wasSuccess = LibraryViewModel().savePDFToLocalFileSystem(path: SensitiveConstants.DOWNLOAD_FILE, //path: SensitiveConstants.TEMP_PATH,
+            let wasSuccess = LibraryViewModel().savePDFToLocalFileSystem(path: SensitiveConstants.TEMP_PATH, //path: SensitiveConstants.TEMP_PATH,
                                                                          fileName: self.bookSelectedName!)//fileName: self.bookSelectedName!)
             
             print("result: \(String(describing: wasSuccess))")

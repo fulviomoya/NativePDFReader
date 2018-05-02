@@ -25,7 +25,7 @@ class ServiceManagerFake: ServicesManager {
          super.downloadImageAsync(url: url, completion: completion)
     }
     
-    override func downloadPDFFile(url: String) -> NSData? {
+    override func downloadPDFFile(url: String) -> Data? {
         return super.downloadPDFFile(url: url)
     }
     

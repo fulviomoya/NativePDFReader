@@ -26,7 +26,7 @@ class LibraryViewModel {
     }
     
     func savePDFToLocalFileSystem(path: String, fileName: String ) -> Bool {
-        let filePathSerial = path + fileName + "," + "F5TFXF3X5FEKJ6C"
+        let filePathSerial = path  + fileName// + "," + "F5TFXF3X5FEKJ6C"
         if let pdf = self.service.downloadPDFFile(url: filePathSerial) {
             if fileManager.writeNew(file: fileName, data: pdf) {
                 print(">> Save file correct")

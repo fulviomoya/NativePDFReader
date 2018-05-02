@@ -11,6 +11,7 @@ import UIKit
 class ValidationCodeViewController: BaseViewController {
     var model: LibraryViewModel!
     
+    @IBOutlet weak var validateButton: UIButton!
     @IBOutlet weak var codeTextField: UITextField!
 
     override func viewDidLoad() {
@@ -19,12 +20,19 @@ class ValidationCodeViewController: BaseViewController {
     }
     
     @IBAction func validateButtonTouched(_ sender: Any) {
+        UserDefaults.standard.set(codeTextField.text, forKey: "SerialValidCode")
         self.performSegue(withIdentifier: "validationCodeToLibrarySegue", sender: codeTextField.text)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "validationCodeToLibrarySegue" {
              LibraryViewController.validationCode = sender as? String
+        }
+    }
+    
+    @IBAction func serialCodeEditBegin(_ sender: Any) {
+        if (codeTextField.text?.count)! > 0 {
+            validateButton.isEnabled = true
         }
     }
 }
