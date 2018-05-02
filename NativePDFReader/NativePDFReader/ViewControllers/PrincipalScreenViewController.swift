@@ -10,12 +10,19 @@ import UIKit
 
 class ViewController: BaseViewController {
     
+    @IBOutlet weak var image: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad() 
     }
-    @IBOutlet weak var testButton: UIButton!
     
     @IBAction func testButtonTouched(_ sender: Any) {
-        testButton.setTitle("Touched.!", for: .normal)
+        let download = DownloadServices()
+        download.startDownload(url: "http://susaetaon.com:8080/ords/susaetaon/archivos/descargas/1,99")
+       
+        let fmanager = FileManagerServices()
+        let imageName = fmanager.read(file: "newPhoto.png")
+        
+        image.image = UIImage(contentsOfFile: imageName)
+        loadViewIfNeeded()
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20A6686E20969402000A6195 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A6686D20969402000A6195 /* Download.swift */; };
+		20A66870209695B8000A6195 /* DownloadServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A6686F209695B8000A6195 /* DownloadServices.swift */; };
 		20AE0C17208B8AAB0050D072 /* SensitiveConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AE0C16208B8AAB0050D072 /* SensitiveConstants.swift */; };
 		20AE0C19208BAC940050D072 /* FileManagerServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AE0C18208BAC940050D072 /* FileManagerServices.swift */; };
 		20AE0C1F208CEAAF0050D072 /* BookItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AE0C1E208CEAAF0050D072 /* BookItemCollectionViewCell.swift */; };
@@ -29,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20A6686D20969402000A6195 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
+		20A6686F209695B8000A6195 /* DownloadServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadServices.swift; sourceTree = "<group>"; };
 		20AE0C16208B8AAB0050D072 /* SensitiveConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitiveConstants.swift; sourceTree = "<group>"; };
 		20AE0C18208BAC940050D072 /* FileManagerServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerServices.swift; sourceTree = "<group>"; };
 		20AE0C1E208CEAAF0050D072 /* BookItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				FAF0CA672089600F00D0B00F /* Books.swift */,
+				20A6686D20969402000A6195 /* Download.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 				FAF88B992088FD2800B14D4B /* ServicesManager.swift */,
 				20AE0C18208BAC940050D072 /* FileManagerServices.swift */,
 				FA396C80208EB78E0052CB10 /* ServiceManagerFake.swift */,
+				20A6686F209695B8000A6195 /* DownloadServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -300,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAF0CA682089600F00D0B00F /* Books.swift in Sources */,
+				20A6686E20969402000A6195 /* Download.swift in Sources */,
 				FAF0CA77208A7A4800D0B00F /* LibraryViewController.swift in Sources */,
 				FAF0CA6F2089778000D0B00F /* ValidationCodeViewController.swift in Sources */,
 				FABB90AE208A7AD700A389C6 /* BookTableViewCell.swift in Sources */,
@@ -310,6 +317,7 @@
 				FABB90B0208A7B1700A389C6 /* TableConstants.swift in Sources */,
 				20AE0C19208BAC940050D072 /* FileManagerServices.swift in Sources */,
 				FAE447E02088F2C100B5186A /* PrincipalScreenViewController.swift in Sources */,
+				20A66870209695B8000A6195 /* DownloadServices.swift in Sources */,
 				FAF0CA6B20896DCD00D0B00F /* BaseViewController.swift in Sources */,
 				20AE0C17208B8AAB0050D072 /* SensitiveConstants.swift in Sources */,
 				FAE447DE2088F2C100B5186A /* AppDelegate.swift in Sources */,

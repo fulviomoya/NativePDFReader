@@ -18,11 +18,15 @@ class FileManagerServices {
                                                  create: false)
     }
     
-    func writeNew(file fileName: String, data: NSData) -> Bool{
-        print("File saved on device disk")
+    func writeNew(file fileName: String, data: Data) -> Bool{
         let fileURL = documentDirectory?.appendingPathComponent(fileName)
-        
-        return data.write(to: fileURL!, atomically: true)
+        do {
+            try data.write(to: fileURL!, options: .atomic)
+            print("File saved on device disk")
+        } catch {
+            return false
+        }
+        return true
     }
     
     func read(file fileName: String) -> String {

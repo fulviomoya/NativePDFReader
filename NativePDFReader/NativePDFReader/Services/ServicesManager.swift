@@ -49,11 +49,15 @@ class ServicesManager: ServicesProtocol {
     }
     
     func downloadPDFFile(url: String) -> NSData? {
-        guard let pdfData = NSData(contentsOf: URL(string: url + "," + "L429OKT1XJBBB2R")!) else {
+        let downloadService = DownloadServices()
+        downloadService.startDownload(url: url)
+     /*   guard let pdfData = NSData(contentsOf: URL(string: url + "," + "L429OKT1XJBBB2R")!) else {
             print("ERROR: A problem download the pdf file")
             return nil
         }
+        
         print(">> Download success")
-        return pdfData
+        return pdfData */
+        return nil
     }
 }

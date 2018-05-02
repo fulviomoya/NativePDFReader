@@ -37,5 +37,4 @@ class ServiceManagerFake: ServicesManager {
      
         return [book, book2, book3, book4]
     }
-    
 }
