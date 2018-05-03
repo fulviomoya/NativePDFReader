@@ -16,16 +16,15 @@
 		FA396C81208EB78E0052CB10 /* ServiceManagerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA396C80208EB78E0052CB10 /* ServiceManagerFake.swift */; };
 		FA96EAA6208AAD6400D6F224 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA96EAA5208AAD6400D6F224 /* LibraryViewModel.swift */; };
 		FABB90AE208A7AD700A389C6 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB90AD208A7AD700A389C6 /* BookTableViewCell.swift */; };
-		FABB90B0208A7B1700A389C6 /* TableConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB90AF208A7B1700A389C6 /* TableConstants.swift */; };
 		FAE447DE2088F2C100B5186A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE447DD2088F2C100B5186A /* AppDelegate.swift */; };
-		FAE447E02088F2C100B5186A /* PrincipalScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE447DF2088F2C100B5186A /* PrincipalScreenViewController.swift */; };
+		FAE447E02088F2C100B5186A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE447DF2088F2C100B5186A /* HomeViewController.swift */; };
 		FAE447E32088F2C100B5186A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE447E12088F2C100B5186A /* Main.storyboard */; };
 		FAE447E52088F2C200B5186A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE447E42088F2C200B5186A /* Assets.xcassets */; };
 		FAE447E82088F2C200B5186A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE447E62088F2C200B5186A /* LaunchScreen.storyboard */; };
 		FAF0CA682089600F00D0B00F /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CA672089600F00D0B00F /* Books.swift */; };
 		FAF0CA6B20896DCD00D0B00F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CA6A20896DCD00D0B00F /* BaseViewController.swift */; };
 		FAF0CA6F2089778000D0B00F /* ValidationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CA6E2089778000D0B00F /* ValidationCodeViewController.swift */; };
-		FAF0CA77208A7A4800D0B00F /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CA76208A7A4800D0B00F /* LibraryViewController.swift */; };
+		FAF0CA77208A7A4800D0B00F /* BookLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF0CA76208A7A4800D0B00F /* BookLibraryViewController.swift */; };
 		FAF88B9A2088FD2800B14D4B /* ServicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF88B992088FD2800B14D4B /* ServicesManager.swift */; };
 		FAF88B9F2088FE6100B14D4B /* GeneralConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF88B9E2088FE6100B14D4B /* GeneralConstants.swift */; };
 /* End PBXBuildFile section */
@@ -42,10 +41,9 @@
 		FA396C80208EB78E0052CB10 /* ServiceManagerFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManagerFake.swift; sourceTree = "<group>"; };
 		FA96EAA5208AAD6400D6F224 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		FABB90AD208A7AD700A389C6 /* BookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
-		FABB90AF208A7B1700A389C6 /* TableConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableConstants.swift; sourceTree = "<group>"; };
 		FAE447DA2088F2C100B5186A /* NativePDFReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NativePDFReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE447DD2088F2C100B5186A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FAE447DF2088F2C100B5186A /* PrincipalScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalScreenViewController.swift; sourceTree = "<group>"; };
+		FAE447DF2088F2C100B5186A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FAE447E22088F2C100B5186A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FAE447E42088F2C200B5186A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAE447E72088F2C200B5186A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,7 +51,7 @@
 		FAF0CA672089600F00D0B00F /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		FAF0CA6A20896DCD00D0B00F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FAF0CA6E2089778000D0B00F /* ValidationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationCodeViewController.swift; sourceTree = "<group>"; };
-		FAF0CA76208A7A4800D0B00F /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		FAF0CA76208A7A4800D0B00F /* BookLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLibraryViewController.swift; sourceTree = "<group>"; };
 		FAF88B992088FD2800B14D4B /* ServicesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesManager.swift; sourceTree = "<group>"; };
 		FAF88B9E2088FE6100B14D4B /* GeneralConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,19 +106,26 @@
 		FAE447DC2088F2C100B5186A /* NativePDFReader */ = {
 			isa = PBXGroup;
 			children = (
+				FAE447DD2088F2C100B5186A /* AppDelegate.swift */,
 				FAF0CA6620895EEE00D0B00F /* Models */,
 				FAF88B9D2088FE4A00B14D4B /* Utils */,
+				FAF88B972088FCCF00B14D4B /* Services */,
 				FAF88B982088FCEB00B14D4B /* ViewModels */,
 				FAF0CA6920896DAD00D0B00F /* ViewControllers */,
-				FAF0CA74208A7A0B00D0B00F /* Scenes */,
-				FAF88B972088FCCF00B14D4B /* Services */,
-				FAE447DD2088F2C100B5186A /* AppDelegate.swift */,
 				FAE447E12088F2C100B5186A /* Main.storyboard */,
 				FAE447E42088F2C200B5186A /* Assets.xcassets */,
 				FAE447E62088F2C200B5186A /* LaunchScreen.storyboard */,
 				FAE447E92088F2C200B5186A /* Info.plist */,
 			);
 			path = NativePDFReader;
+			sourceTree = "<group>";
+		};
+		FAE94845209B683D005563CC /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				FA396C80208EB78E0052CB10 /* ServiceManagerFake.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		FAF0CA6620895EEE00D0B00F /* Models */ = {
@@ -136,36 +141,20 @@
 			isa = PBXGroup;
 			children = (
 				FAF0CA6A20896DCD00D0B00F /* BaseViewController.swift */,
-				FAE447DF2088F2C100B5186A /* PrincipalScreenViewController.swift */,
+				FAE447DF2088F2C100B5186A /* HomeViewController.swift */,
 				FAF0CA6E2089778000D0B00F /* ValidationCodeViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		FAF0CA74208A7A0B00D0B00F /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				FAF0CA75208A7A2100D0B00F /* Library */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
-		FAF0CA75208A7A2100D0B00F /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				FABB90AF208A7B1700A389C6 /* TableConstants.swift */,
-				FAF0CA76208A7A4800D0B00F /* LibraryViewController.swift */,
+				FAF0CA76208A7A4800D0B00F /* BookLibraryViewController.swift */,
 				FABB90AD208A7AD700A389C6 /* BookTableViewCell.swift */,
 				20AE0C1E208CEAAF0050D072 /* BookItemCollectionViewCell.swift */,
 			);
-			path = Library;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		FAF88B972088FCCF00B14D4B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FAE94845209B683D005563CC /* Mocks */,
 				FAF88B992088FD2800B14D4B /* ServicesManager.swift */,
-				FA396C80208EB78E0052CB10 /* ServiceManagerFake.swift */,
 				20AE0C18208BAC940050D072 /* FileManagerServices.swift */,
 				20A6686F209695B8000A6195 /* DownloadServices.swift */,
 			);
@@ -307,16 +296,15 @@
 			files = (
 				FAF0CA682089600F00D0B00F /* Books.swift in Sources */,
 				20A6686E20969402000A6195 /* Download.swift in Sources */,
-				FAF0CA77208A7A4800D0B00F /* LibraryViewController.swift in Sources */,
+				FAF0CA77208A7A4800D0B00F /* BookLibraryViewController.swift in Sources */,
 				FAF0CA6F2089778000D0B00F /* ValidationCodeViewController.swift in Sources */,
 				FABB90AE208A7AD700A389C6 /* BookTableViewCell.swift in Sources */,
 				FA96EAA6208AAD6400D6F224 /* LibraryViewModel.swift in Sources */,
 				FAF88B9F2088FE6100B14D4B /* GeneralConstants.swift in Sources */,
 				FA396C81208EB78E0052CB10 /* ServiceManagerFake.swift in Sources */,
 				FAF88B9A2088FD2800B14D4B /* ServicesManager.swift in Sources */,
-				FABB90B0208A7B1700A389C6 /* TableConstants.swift in Sources */,
 				20AE0C19208BAC940050D072 /* FileManagerServices.swift in Sources */,
-				FAE447E02088F2C100B5186A /* PrincipalScreenViewController.swift in Sources */,
+				FAE447E02088F2C100B5186A /* HomeViewController.swift in Sources */,
 				20A66870209695B8000A6195 /* DownloadServices.swift in Sources */,
 				FAF0CA6B20896DCD00D0B00F /* BaseViewController.swift in Sources */,
 				20AE0C17208B8AAB0050D072 /* SensitiveConstants.swift in Sources */,

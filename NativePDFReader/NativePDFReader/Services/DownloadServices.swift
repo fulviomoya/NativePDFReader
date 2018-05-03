@@ -6,35 +6,34 @@
 //  Copyright © 2018 Fulvio Moya. All rights reserved.
 //
 
-import Foundation
+import Alamofire
+import AlamofireImage
 
-class DownloadServices {
-    // var downloadSession: URLSession!
-    var activeDownloads: [Int: Download] = [:]
-    
-    func startDownload(url: String) {
-        let download = Download(track: 1)
-        let urlSession = URLSession(configuration: .default)
-        var dataTask: URLSessionDataTask?
-        let fmanager = FileManagerServices()
-        
-        dataTask = urlSession.dataTask(with: URL(string: url)!) {  (data, response, error) in
-            if error != nil {
-                print("\(String(describing: error?.localizedDescription))")
-            }
-            guard let pdf = data else {
-                print("error in download")
+typealias completionImageHandler = (UIImage) -> Void
+
+protocol DownloadServicesProtocol {
+    func downloadImageAsync(url: String, completion: @escaping completionImageHandler)
+    func downloadPDFFile(url: String) -> Data?
+}
+
+class DownloadServices: DownloadServicesProtocol {
+    func downloadImageAsync(url: String, completion: @escaping completionImageHandler){
+        Alamofire.request(url).responseImage { response in
+            guard let image = response.result.value else {
+                print("image can't be downloaded")
                 return
             }
-            
-            if fmanager.writeNew(file: "newPhoto.png", data: pdf) {
-                print("> download success")
-               
-            }
+            completion(image)
         }
-        dataTask?.resume()
-        
-        download.isDownloading = true
-        activeDownloads[download.track] = download
     }
+    
+    func downloadPDFFile(url: String) -> Data? {
+        guard let pdfData = NSData(contentsOf: URL(string: url)!) else {
+            print("ERROR: A problem download the pdf file")
+            return nil
+        }
+        print(">> Download success")
+        return pdfData as Data
+    }
+    //TODO: Create a light version to verify the books' names and match with downloaded
 }

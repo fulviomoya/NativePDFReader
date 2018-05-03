@@ -22,10 +22,10 @@ class BookItemCollectionViewCell: UICollectionViewCell {
         
         downloadButton.setTitle("Downloading...", for: .normal)
         self.layoutIfNeeded()
-        DispatchQueue.global(qos: .background).async {
-            let wasSuccess = LibraryViewModel().savePDFToLocalFileSystem(path: SensitiveConstants.TEMP_PATH, //path: SensitiveConstants.TEMP_PATH,
-                                                                         fileName: self.bookSelectedName!)//fileName: self.bookSelectedName!)
-            
+        
+        DispatchQueue.global(qos: .utility).async {
+            let wasSuccess = LibraryViewModel().savePDFToLocalFileSystem(path: SensitiveConstants.TEMP_PATH,
+                                                                         fileName: self.bookSelectedName!)
             print("result: \(String(describing: wasSuccess))")
             self.downloadButton.isHidden = true
             self.activityIndicator.isHidden = true

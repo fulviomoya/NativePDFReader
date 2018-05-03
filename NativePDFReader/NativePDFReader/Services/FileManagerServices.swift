@@ -14,11 +14,11 @@ class FileManagerServices {
     
     init() {
         fileManager = FileManager.default
-        documentDirectory = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil,
-                                                 create: false)
+        documentDirectory = try! fileManager.url(for: .documentDirectory, in: .userDomainMask,
+                                                 appropriateFor: nil, create: false)
     }
     
-    func writeNew(file fileName: String, data: Data) -> Bool{
+    func writeNew(file fileName: String, data: Data) -> Bool {
         let fileURL = documentDirectory?.appendingPathComponent(fileName)
         do {
             try data.write(to: fileURL!, options: .atomicWrite)
@@ -41,7 +41,7 @@ class FileManagerServices {
     
     func getLocalFileRoute() -> [URL] {
         let contentDirectory = try! fileManager.contentsOfDirectory(at: documentDirectory!, includingPropertiesForKeys: nil,
-                                                     options: .skipsHiddenFiles)
+                                                                    options: .skipsHiddenFiles)
         return contentDirectory
     }
     

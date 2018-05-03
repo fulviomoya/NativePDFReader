@@ -13,11 +13,10 @@ class BookTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var books: [Book]!
-    var books2: [Book]!
     
-    let service =  ServiceManagerFake()
-    let services2 = ServicesManager()
+    let dispatchGroup = DispatchGroup()
     let fmanager = FileManagerServices()
+    let viewModel = LibraryViewModel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,18 +26,16 @@ class BookTableViewCell: UITableViewCell {
         
         var codeSerial: String
         
-        if let validationCode = LibraryViewController.validationCode {
-             codeSerial = validationCode
+        if let validationCode = BookLibraryViewController.validationCode {
+            codeSerial = validationCode
         } else {
-             codeSerial = UserDefaults.standard.object(forKey: "SerialValidCode") as! String
+            codeSerial = UserDefaults.standard.object(forKey: "SerialValidCode") as! String
         }
         
-        services2.getSerialCollection(serial: codeSerial) { libary in
-            self.books = libary.books
-        }
-        
-        service.getSerialCollection(serial: codeSerial) { libary in
-            self.books = libary.books
+        dispatchGroup.enter()
+        self.viewModel.getLibraryBooks(identifier: codeSerial) { library in
+            self.books = library.books
+            self.dispatchGroup.leave()
         }
     }
 }
@@ -46,26 +43,26 @@ class BookTableViewCell: UITableViewCell {
 // UICollectionViewDataSource
 extension BookTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4// books.count  //Int(TableConstants.totalItem)
+        return books == nil ? 4 : books.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCell", for: indexPath) as? BookItemCollectionViewCell
-        service.downloadImageAsync(url: books[indexPath.row].thumbnailName) { image in
-            cell?.thumbnailImage.image = image
-            cell?.activityIndicator.isHidden = true
-            cell?.bookSelectedName = self.books[indexPath.row].fileName
-            cell?.downloadButton.isHidden = false
-             
-            for name in FileManagerServices().getNameDocumentsOnDirectory() {
-                print(" book \(self.books[indexPath.row].fileName) - file \(name)")
-                if name == self.books[indexPath.row].fileName {
-                    cell?.downloadButton.isHidden = true
-                    print("> Positivo")
-                    break
+        dispatchGroup.notify(queue: .main){
+            self.viewModel.getThumbnailImage(imageURL: self.books[indexPath.row].thumbnailName) { image in
+                cell?.thumbnailImage.image = image
+                cell?.activityIndicator.isHidden = true
+                cell?.bookSelectedName = self.books[indexPath.row].fileName
+                cell?.downloadButton.isHidden = false
+                
+                for name in FileManagerServices().getNameDocumentsOnDirectory() {
+                    if name == self.books[indexPath.row].fileName {
+                        cell?.downloadButton.isHidden = true
+                        print("> \(name) exist on storage device")
+                        break
+                    }
                 }
-            }
-        }
+            }}
         return cell!
     }
     
@@ -74,7 +71,7 @@ extension BookTableViewCell: UICollectionViewDataSource {
         let remotePDFDocumentURL = URL(string: fmanager.getPathOf(file: fileName))!
         let reader = PDFViewController.createNew(with: PDFDocument(url: remotePDFDocumentURL)!, title: fileName)
         
-        if let myViewController = parentViewController as? LibraryViewController {
+        if let myViewController = self.parentViewController as? BookLibraryViewController {
             myViewController.navigationController!.pushViewController(reader, animated: true)
         }
     }
@@ -84,19 +81,6 @@ extension BookTableViewCell: UICollectionViewDataSource {
 extension BookTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth = TableConstants.getItemWidth(boundWidth: collectionView.bounds.size.width)
-        return CGSize(width: itemWidth + 100, height: itemWidth*2.2) //Same because is a square
-    }
-}
-
-extension UIView {
-    var parentViewController: UIViewController? {
-        var parentResponder: UIResponder? = self
-        while parentResponder != nil {
-            parentResponder = parentResponder!.next
-            if let viewController = parentResponder as? UIViewController {
-                return viewController
-            }
-        }
-        return nil
+        return CGSize(width: itemWidth + 100, height: itemWidth*2.2)
     }
 }
