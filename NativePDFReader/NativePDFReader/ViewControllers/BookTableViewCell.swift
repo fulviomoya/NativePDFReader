@@ -13,10 +13,9 @@ class BookTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var books: [Book]!
-    
-    let dispatchGroup = DispatchGroup()
     let fmanager = FileManagerServices()
     let viewModel = LibraryViewModel()
+    let group = DispatchGroup()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,18 +23,16 @@ class BookTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        var codeSerial: String
-        
-        if let validationCode = BookLibraryViewController.validationCode {
-            codeSerial = validationCode
+        if let bookLibrary = BookLibraryViewController.books {
+            books = bookLibrary
         } else {
-            codeSerial = UserDefaults.standard.object(forKey: "SerialValidCode") as! String
-        }
-        
-        dispatchGroup.enter()
-        self.viewModel.getLibraryBooks(identifier: codeSerial) { library in
-            self.books = library.books
-            self.dispatchGroup.leave()
+            group.enter()
+            let serialSaved = UserDefaults.standard.object(forKey: "SerialValidCode") as? String
+            viewModel.getLibraryBooks(identifier: serialSaved!) { library in
+                
+                self.books = library.books
+                self.group.leave()
+            }
         }
     }
 }
@@ -48,7 +45,7 @@ extension BookTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCell", for: indexPath) as? BookItemCollectionViewCell
-        dispatchGroup.notify(queue: .main){
+        group.notify(queue: .main) {
             self.viewModel.getThumbnailImage(imageURL: self.books[indexPath.row].thumbnailName) { image in
                 cell?.thumbnailImage.image = image
                 cell?.activityIndicator.isHidden = true
@@ -62,7 +59,8 @@ extension BookTableViewCell: UICollectionViewDataSource {
                         break
                     }
                 }
-            }}
+            }
+        }
         return cell!
     }
     

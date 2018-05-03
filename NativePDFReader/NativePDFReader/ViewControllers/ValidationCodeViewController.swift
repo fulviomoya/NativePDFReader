@@ -9,28 +9,48 @@
 import UIKit
 
 class ValidationCodeViewController: BaseViewController {
-    
+    @IBOutlet weak var errorBar: UIView!
     @IBOutlet weak var validateButton: UIButton!
     @IBOutlet weak var codeTextField: UITextField!
-
+    
+    let libraryViewModel = LibraryViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "validationCodeToLibrarySegue" {
-            BookLibraryViewController.validationCode = sender as? String
-        }
-    }
-    
     @IBAction func validateButtonTouched(_ sender: Any) {
-        UserDefaults.standard.set(codeTextField.text, forKey: "SerialValidCode")
-        self.performSegue(withIdentifier: "validationCodeToLibrarySegue", sender: codeTextField.text)
+        libraryViewModel.getLibraryBooks(identifier: codeTextField.text!) { library in
+            if library.books.count > 0 {
+                UserDefaults.standard.set(self.codeTextField.text!, forKey: "SerialValidCode")
+                self.performSegue(withIdentifier: "validationCodeToLibrarySegue", sender: library.books)
+            } else {
+                self.showErrorMessage()
+            }
+            self.codeTextField.text = ""
+            self.validateButton.isEnabled = false
+        }
     }
     
     @IBAction func serialCodeEditBegin(_ sender: Any) {
         if (codeTextField.text?.count)! > 0 {
             validateButton.isEnabled = true
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "validationCodeToLibrarySegue" {
+            BookLibraryViewController.books = sender as? [Book]
+        }
+    }
+    
+    fileprivate func showErrorMessage() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.errorBar.alpha = 0.9
+        })
+        
+        UIView.animate(withDuration: 5, animations: {
+            self.errorBar.alpha = 0
+        })
     }
 }

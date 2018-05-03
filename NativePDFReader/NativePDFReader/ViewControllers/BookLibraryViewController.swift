@@ -11,7 +11,7 @@ import UIKit
 class BookLibraryViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    static var validationCode: String?
+    static var books: [Book]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ extension BookLibraryViewController: UITableViewDataSource {
         case 0:
             return tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
         default:
-             return tableView.dequeueReusableCell(withIdentifier: "BookCollectionCell", for: indexPath)
+            return tableView.dequeueReusableCell(withIdentifier: "BookCollectionCell", for: indexPath)
         }
     }
 }

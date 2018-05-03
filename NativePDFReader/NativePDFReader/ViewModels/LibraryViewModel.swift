@@ -19,8 +19,8 @@ class LibraryViewModel {
         apiService = ServicesManager()
     }
     
-    func getLibraryBooks(identifier isbn: String, successHandler: @escaping completionHandler) {
-        apiService.getSerialCollection(serial: isbn, completion: successHandler)
+    func getLibraryBooks(identifier code: String, successHandler: @escaping completionHandler) {
+        apiService.getSerialCollection(serial: code, completion: successHandler)
     }
     
     func getThumbnailImage(imageURL: String, successHandler: @escaping completionImageHandler) {
