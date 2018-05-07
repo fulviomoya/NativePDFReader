@@ -16,26 +16,6 @@ class BaseViewController: UIViewController {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHideNotification(_:)),
-                                               name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShowNotification(_:)),
-                                               name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-    }
-    
-    // Notification Keyboard Appear
-    @objc func keyboardWillShowNotification(_ notification: Notification) {
-        let keyboardHeight = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-            self.view.window?.frame.origin.y = -1 * (keyboardHeight!)/2
-            self.view.layoutIfNeeded()
-        })
-    }
-    
-    @objc func keyboardWillHideNotification(_ notification: Notification) {
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-            self.view.window?.frame.origin.y = 0
-            self.view.layoutIfNeeded()
-        })
     }
 }
 

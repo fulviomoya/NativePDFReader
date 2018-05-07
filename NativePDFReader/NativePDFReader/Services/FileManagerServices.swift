@@ -29,14 +29,20 @@ class FileManagerServices {
         return true
     }
     
-    func getPathOf(file fileName: String) -> String {
+    func removeFiles(_ files: [URL]) {
+        for file in files {
+            try? fileManager.removeItem(at: file)
+            print("> File remove: \(file)")
+        } 
+    }
+    
+    func getPathOf(file fileName: String) -> String? {
         for file in getLocalFileRoute() {
             if file.lastPathComponent == fileName {
                 return file.absoluteString
             }
         }
-        //Fix that what return when no exist documents
-        return getLocalFileRoute()[0].absoluteString
+        return nil
     }
     
     func getLocalFileRoute() -> [URL] {

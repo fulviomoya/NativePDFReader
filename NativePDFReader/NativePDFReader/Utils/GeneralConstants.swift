@@ -11,6 +11,7 @@ import UIKit
 
 enum GeneralConstants {
     static let DUMMY_PDF = "http://www.pdf995.com/samples/pdf.pdf"
+    static let START_PERIOD_MONTH = 8
 }
 
 enum DocumentStatus: String {
