@@ -13,7 +13,6 @@ class BookTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var books: [Book]!
-    let fmanager = FileManagerServices()
     let viewModel = LibraryViewModel()
     let group = DispatchGroup()
     
@@ -25,13 +24,20 @@ class BookTableViewCell: UITableViewCell {
         
         if let bookLibrary = BookLibraryViewController.books {
             books = bookLibrary
-        } else {
+        } else if Network.reachability?.status.rawValue != "unreachable" {
             group.enter()
             let serialSaved = UserDefaults.standard.object(forKey: "SerialValidCode") as? String
             viewModel.getLibraryBooks(identifier: serialSaved!) { library in
-                
                 self.books = library.books
                 self.group.leave()
+            }
+        } else {
+            books = [Book]()
+            for localItem in viewModel.fileManager.getNameDocumentsOnDirectory() {
+                if localItem.contains(".pdf")  {
+                    self.books.append(Book(id: "1", thumbnailName: localItem.replacingOccurrences(of: ".pdf", with: ".png"),
+                                           fileName: localItem.replacingOccurrences(of: ".png", with: ".pdf"), expirationDate: "<#T##String#>"))
+                }
             }
         }
     }
@@ -45,19 +51,23 @@ extension BookTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookCell", for: indexPath) as? BookItemCollectionViewCell
+        
         group.notify(queue: .main) {
-            self.viewModel.getThumbnailImage(imageURL: self.books[indexPath.row].thumbnailName) { image in
-                cell?.thumbnailImage.image = image
-                cell?.activityIndicator.isHidden = true
-                cell?.bookSelectedName = self.books[indexPath.row].fileName
-                cell?.downloadButton.isHidden = false
-                
-                for name in FileManagerServices().getNameDocumentsOnDirectory() {
-                    if name == self.books[indexPath.row].fileName {
-                        cell?.downloadButton.isHidden = true
-                        print("> \(name) exist on storage device")
-                        break
-                    }
+            let selectedBook = self.books[indexPath.row].fileName
+            
+            cell?.activityIndicator.isHidden = true
+            cell?.bookSelectedName = selectedBook
+            cell?.downloadButton.isHidden = false
+            
+            self.viewModel.getThumbnailImage(fileName: selectedBook) { limage in
+               cell?.thumbnailImage.image = limage
+            }
+            
+            for name in FileManagerServices().getNameDocumentsOnDirectory() {
+                if name == selectedBook {
+                    cell?.downloadButton.isHidden = true
+                    print("> \(name) exist on storage device")
+                    break
                 }
             }
         }
@@ -69,7 +79,7 @@ extension BookTableViewCell: UICollectionViewDataSource {
         
         if cell?.downloadButton.isHidden == true {
             let fileName: String = books[indexPath.row].fileName
-            let remotePDFDocumentURL = URL(string: fmanager.getPathOf(file: fileName)!)!
+            let remotePDFDocumentURL = URL(string: self.viewModel.fileManager.getPathOf(file: fileName)!)!
             let reader = PDFViewController.createNew(with: PDFDocument(url: remotePDFDocumentURL)!, title: fileName)
             
             if let myViewController = self.parentViewController as? BookLibraryViewController {

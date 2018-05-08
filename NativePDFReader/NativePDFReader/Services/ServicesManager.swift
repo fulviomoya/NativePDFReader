@@ -17,8 +17,6 @@ protocol ServicesProtocol {
 
 class ServicesManager: ServicesProtocol {
     var completeLibrary: Library?
-    var ima: UIImage?
-    
     func getSerialCollection(serial code: String, completion: @escaping completionHandler) {
         Alamofire.request(SensitiveConstants.COLLECTION_INFO + code).responseJSON { dataResponse in
             guard let _ = dataResponse.data else {
@@ -29,7 +27,7 @@ class ServicesManager: ServicesProtocol {
             guard let library = try? JSONDecoder().decode(Library.self, from: dataResponse.data!) else {
                 print(Errors.CANT_DECODE_DATA)
                 return
-            }
+            } 
             completion(library)
         }
     }

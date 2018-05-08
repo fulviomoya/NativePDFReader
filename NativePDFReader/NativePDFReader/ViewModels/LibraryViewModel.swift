@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class LibraryViewModel {
     let downloadService: DownloadServicesProtocol!
@@ -23,11 +24,23 @@ class LibraryViewModel {
         apiService.getSerialCollection(serial: code, completion: successHandler)
     }
     
-    func getThumbnailImage(imageURL: String, successHandler: @escaping completionImageHandler) {
-        downloadService.downloadImageAsync(url: imageURL, completion: successHandler)
+    func getThumbnailImage(fileName: String, completion: @escaping completionImageHandler){
+        let newThumbnailName = fileName.replacingOccurrences(of: ".pdf", with: ".png")
+        
+        if let localThumnailPath = fileManager.getPathOf(file: newThumbnailName){
+            let localImage =  try! Data(contentsOf: URL(string: localThumnailPath)!)
+            completion(UIImage(data: localImage)!)
+        } else {
+            //saving the thumbnailImage
+            downloadService.downloadImageAsync(url: SensitiveConstants.TEMP_PATH + newThumbnailName){ image in
+                let savedThumbnail = self.fileManager.writeNew(file: newThumbnailName, data: UIImagePNGRepresentation(image)!)
+                print("was saved the thumbnail? \(savedThumbnail)")
+                completion(image)
+            }
+        }
     }
     
-    func savePDFToLocalFileSystem(path: String, fileName: String ) -> Bool {
+    func saveToLocalFileSystem(path: String, fileName: String ) -> Bool {
         let filePathSerial = path + fileName
         if let pdf = downloadService.downloadPDFFile(url: filePathSerial) {
             if fileManager.writeNew(file: fileName, data: pdf) {

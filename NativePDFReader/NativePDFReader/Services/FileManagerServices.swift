@@ -22,7 +22,7 @@ class FileManagerServices {
         let fileURL = documentDirectory?.appendingPathComponent(fileName)
         do {
             try data.write(to: fileURL!, options: .atomicWrite)
-            print("File saved on device disk")
+            print("File \(fileName) saved on device disk")
         } catch {
             return false
         }

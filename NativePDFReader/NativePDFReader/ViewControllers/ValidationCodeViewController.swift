@@ -12,6 +12,7 @@ class ValidationCodeViewController: BaseViewController {
     @IBOutlet weak var errorBar: UIView!
     @IBOutlet weak var validateButton: UIButton!
     @IBOutlet weak var codeTextField: UITextField!
+    @IBOutlet weak var errorDescriptionLabel: UILabel!
     
     let libraryViewModel = LibraryViewModel()
     
@@ -20,15 +21,20 @@ class ValidationCodeViewController: BaseViewController {
     }
     
     @IBAction func validateButtonTouched(_ sender: Any) {
-        libraryViewModel.getLibraryBooks(identifier: codeTextField.text!) { library in
-            if library.books.count > 0 {
-                UserDefaults.standard.set(self.codeTextField.text!, forKey: "SerialValidCode")
-                self.performSegue(withIdentifier: "validationCodeToLibrarySegue", sender: library.books)
-            } else {
-                self.showErrorMessage()
+        if Network.reachability?.status.rawValue == "unreachable" {
+            self.errorDescriptionLabel.text = "No es posible establecer conexion de red"
+            self.showErrorMessage()
+        } else {
+            libraryViewModel.getLibraryBooks(identifier: codeTextField.text!) { library in
+                if library.books.count > 0 {
+                    UserDefaults.standard.set(self.codeTextField.text!, forKey: "SerialValidCode")
+                    self.performSegue(withIdentifier: "validationCodeToLibrarySegue", sender: library.books)
+                } else {
+                    self.showErrorMessage()
+                }
+                self.codeTextField.text = ""
+                self.validateButton.isEnabled = false
             }
-            self.codeTextField.text = ""
-            self.validateButton.isEnabled = false
         }
     }
     

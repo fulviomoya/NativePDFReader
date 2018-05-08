@@ -24,7 +24,7 @@ class BookItemCollectionViewCell: UICollectionViewCell {
         self.layoutIfNeeded()
         
         DispatchQueue.global(qos: .utility).async {
-            let wasSuccess = LibraryViewModel().savePDFToLocalFileSystem(path: SensitiveConstants.TEMP_PATH,
+            let wasSuccess = LibraryViewModel().saveToLocalFileSystem(path: SensitiveConstants.TEMP_PATH,
                                                                          fileName: self.bookSelectedName!)
             print("result: \(String(describing: wasSuccess))")
             self.downloadButton.isHidden = true

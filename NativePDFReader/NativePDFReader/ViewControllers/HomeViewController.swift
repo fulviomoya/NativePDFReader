@@ -12,7 +12,8 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var libraryButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
-        if FileManagerServices().getNameDocumentsOnDirectory().count > 0  &&
+        if FileManagerServices().getNameDocumentsOnDirectory().filter({ name in
+            name.contains(".pdf") }).count > 0  &&
             UserDefaults.standard.object(forKey: "SerialValidCode") != nil {
             libraryButton.isEnabled = true
         }
