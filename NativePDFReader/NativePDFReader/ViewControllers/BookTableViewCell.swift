@@ -80,11 +80,12 @@ extension BookTableViewCell: UICollectionViewDataSource {
         if cell?.downloadButton.isHidden == true {
             let fileName: String = books[indexPath.row].fileName
             let remotePDFDocumentURL = URL(string: self.viewModel.fileManager.getPathOf(file: fileName)!)!
-            let reader = PDFViewController.createNew(with: PDFDocument(url: remotePDFDocumentURL)!, title: fileName)
-            
+            weak var reader = PDFViewController.createNew(with: PDFDocument(url: remotePDFDocumentURL)!, title: fileName)
+ 
             if let myViewController = self.parentViewController as? BookLibraryViewController {
-                myViewController.navigationController!.pushViewController(reader, animated: true)
-            }}
+                myViewController.navigationController!.pushViewController(reader!, animated: true)
+            }
+        }
     }
 }
 

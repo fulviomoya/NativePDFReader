@@ -21,6 +21,10 @@ class BookLibraryViewController: BaseViewController {
         //disabling scroll because no need scroll inside cell
         tableView.isScrollEnabled = false
     }
+    
+    override func didReceiveMemoryWarning() {
+      //  self.navigationController.
+    }
 }
 
 extension BookLibraryViewController: UITableViewDataSource {
