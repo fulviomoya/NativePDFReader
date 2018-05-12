@@ -14,25 +14,49 @@ class FileManagerServices {
     
     init() {
         fileManager = FileManager.default
-        documentDirectory = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil,
-                                                 create: false)
+        documentDirectory = try! fileManager.url(for: .documentDirectory, in: .userDomainMask,
+                                                 appropriateFor: nil, create: false)
     }
     
-    func writeNew(file fileName: String, data: NSData) -> Bool{
-        print("File saved on device disk")
+    func writeNew(file fileName: String, data: Data) -> Bool {
         let fileURL = documentDirectory?.appendingPathComponent(fileName)
-        
-        return data.write(to: fileURL!, atomically: true)
+        do {
+            try data.write(to: fileURL!, options: .atomicWrite)
+            print("File \(fileName) saved on device disk")
+        } catch {
+            return false
+        }
+        return true
     }
     
-    func read(file fileName: String) -> String {
-        let currentDirectoryFileNames = try! fileManager.contentsOfDirectory(at: documentDirectory!, includingPropertiesForKeys: nil,
-                                                                             options: .skipsHiddenFiles)
-        for file in currentDirectoryFileNames {
+    func removeFiles(_ files: [URL]) {
+        for file in files {
+            try? fileManager.removeItem(at: file)
+            print("> File remove: \(file)")
+        } 
+    }
+    
+    func getPathOf(file fileName: String) -> String? {
+        for file in getLocalFileRoute() {
             if file.lastPathComponent == fileName {
                 return file.absoluteString
             }
         }
-        return currentDirectoryFileNames[0].absoluteString
+        return nil
+    }
+    
+    func getLocalFileRoute() -> [URL] {
+        let contentDirectory = try! fileManager.contentsOfDirectory(at: documentDirectory!, includingPropertiesForKeys: nil,
+                                                                    options: .skipsHiddenFiles)
+        return contentDirectory
+    }
+    
+    func getNameDocumentsOnDirectory() -> [String] {
+        var fileNames: [String] = []
+        
+        for file in getLocalFileRoute() {
+            fileNames.append(file.absoluteURL.lastPathComponent)
+        }
+        return fileNames
     }
 }

@@ -8,23 +8,26 @@
 
 import UIKit
 
-class LibraryViewController: BaseViewController {
-
+class BookLibraryViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    static var validationCode: String?
+    static var books: [Book]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate   = self
         
         //disabling scroll because no need scroll inside cell
         tableView.isScrollEnabled = false
-        tableView.dataSource = self
-        tableView.delegate   = self
+    }
+    
+    override func didReceiveMemoryWarning() {
+      //  self.navigationController.
     }
 }
 
-extension LibraryViewController: UITableViewDataSource {
+extension BookLibraryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -34,17 +37,17 @@ extension LibraryViewController: UITableViewDataSource {
         case 0:
             return tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath)
         default:
-             return tableView.dequeueReusableCell(withIdentifier: "BookCollectionCell", for: indexPath)
+            return tableView.dequeueReusableCell(withIdentifier: "BookCollectionCell", for: indexPath)
         }
     }
 }
 
 //UITableViewDelegate
-extension LibraryViewController: UITableViewDelegate {
+extension BookLibraryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0: //header cell
-            return 100
+            return 90
         case 1: //collection cell
             let itemHeight = TableConstants.getItemWidth(boundWidth: tableView.bounds.size.width)
             let totalRow = ceil(TableConstants.totalItem / TableConstants.column)
@@ -59,5 +62,4 @@ extension LibraryViewController: UITableViewDelegate {
             return UITableViewAutomaticDimension
         }
     }
-    
 }

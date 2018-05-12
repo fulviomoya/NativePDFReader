@@ -7,26 +7,42 @@
 //
 
 import Foundation
+import UIKit
 
 class LibraryViewModel {
-    let service: ServicesProtocol!
+    let downloadService: DownloadServicesProtocol!
+    let apiService: ServicesProtocol!
     let fileManager: FileManagerServices!
     
     init() {
-        service = ServiceManagerFake()
+        downloadService = DownloadServices()
         fileManager = FileManagerServices()
+        apiService = ServicesManager()
     }
     
-    func getLibraryBooks(identifier isbn: String, successHandler: @escaping completionHandler) {
-        self.service.getSerialCollection(serial: isbn, completion: successHandler)
+    func getLibraryBooks(identifier code: String, successHandler: @escaping completionHandler) {
+        apiService.getSerialCollection(serial: code, completion: successHandler)
     }
     
-    func getThumbnailImage(imageURL: String, successHandler: @escaping completionImageHandler) {
-        self.service.downloadImageAsync(url: imageURL, completion: successHandler)
+    func getThumbnailImage(fileName: String, completion: @escaping completionImageHandler){
+        let newThumbnailName = fileName.replacingOccurrences(of: ".pdf", with: ".png")
+        
+        if let localThumnailPath = fileManager.getPathOf(file: newThumbnailName){
+            let localImage =  try! Data(contentsOf: URL(string: localThumnailPath)!)
+            completion(UIImage(data: localImage)!)
+        } else {
+            //saving the thumbnailImage
+            downloadService.downloadImageAsync(url: SensitiveConstants.TEMP_PATH + newThumbnailName){ image in
+                let savedThumbnail = self.fileManager.writeNew(file: newThumbnailName, data: UIImagePNGRepresentation(image)!)
+                print("was saved the thumbnail? \(savedThumbnail)")
+                completion(image)
+            }
+        }
     }
     
-    func savePDFToLocalFileSystem(path: String, fileName: String ) -> Bool {
-        if let pdf = self.service.downloadPDFFile(url: path+fileName) {
+    func saveToLocalFileSystem(path: String, fileName: String ) -> Bool {
+        let filePathSerial = path + fileName
+        if let pdf = downloadService.downloadPDFFile(url: filePathSerial) {
             if fileManager.writeNew(file: fileName, data: pdf) {
                 print(">> Save file correct")
                 return true

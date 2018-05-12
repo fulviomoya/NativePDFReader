@@ -7,26 +7,59 @@
 //
 
 import UIKit
-import QuickLook
 
 class ValidationCodeViewController: BaseViewController {
-    var model: LibraryViewModel!
-    var quicklook: QLPreviewController!
-    
+    @IBOutlet weak var errorBar: UIView!
+    @IBOutlet weak var validateButton: UIButton!
     @IBOutlet weak var codeTextField: UITextField!
-
+    @IBOutlet weak var errorDescriptionLabel: UILabel!
+    
+    let libraryViewModel = LibraryViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        model = LibraryViewModel()
     }
     
     @IBAction func validateButtonTouched(_ sender: Any) {
-        self.performSegue(withIdentifier: "validationCodeToLibrarySegue", sender: codeTextField.text)
+        if (Network.reachability?.isRunningOnDevice)! &&
+            Network.reachability?.status == Network.Status.unreachable  {
+            self.errorDescriptionLabel.text = "No es posible establecer conexion de red"
+            self.showErrorMessage()
+        } else {
+            libraryViewModel.getLibraryBooks(identifier: codeTextField.text!) { library in
+                if library.books.count > 0 {
+                    UserDefaults.standard.set(self.codeTextField.text!, forKey: "SerialValidCode")
+                   
+                    self.performSegue(withIdentifier: "validationCodeToLibrarySegue", sender: library.books)
+                } else {
+                    self.showErrorMessage()
+                }
+                self.codeTextField.text = ""
+                self.removeFromParentViewController()
+                self.validateButton.isEnabled = false
+            }
+        }
+    }
+    
+    @IBAction func serialCodeEditBegin(_ sender: Any) {
+        if (codeTextField.text?.count)! > 0 {
+            validateButton.isEnabled = true
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "validationCodeToLibrarySegue" {
-             LibraryViewController.validationCode = sender as? String
+            BookLibraryViewController.books = sender as? [Book]
         }
+    }
+    
+    fileprivate func showErrorMessage() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.errorBar.alpha = 0.9
+        })
+        
+        UIView.animate(withDuration: 5, animations: {
+            self.errorBar.alpha = 0
+        })
     }
 }
