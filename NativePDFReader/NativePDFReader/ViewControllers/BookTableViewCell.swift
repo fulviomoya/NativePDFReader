@@ -15,6 +15,7 @@ class BookTableViewCell: UITableViewCell {
     var books: [Book]!
     let viewModel = LibraryViewModel()
     let group = DispatchGroup()
+    weak var reader: PDFViewController!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -60,7 +61,7 @@ extension BookTableViewCell: UICollectionViewDataSource {
             cell?.downloadButton.isHidden = false
             
             self.viewModel.getThumbnailImage(fileName: selectedBook) { limage in
-               cell?.thumbnailImage.image = limage
+                cell?.thumbnailImage.image = limage
             }
             
             for name in FileManagerServices().getNameDocumentsOnDirectory() {
@@ -80,12 +81,36 @@ extension BookTableViewCell: UICollectionViewDataSource {
         if cell?.downloadButton.isHidden == true {
             let fileName: String = books[indexPath.row].fileName
             let remotePDFDocumentURL = URL(string: self.viewModel.fileManager.getPathOf(file: fileName)!)!
-            weak var reader = PDFViewController.createNew(with: PDFDocument(url: remotePDFDocumentURL)!, title: fileName)
- 
+            
+            reader = PDFViewController.createNew(with: PDFDocument(url: remotePDFDocumentURL)!, title: fileName,
+                                                     actionButtonImage: UIImage(named: "magnifier_icon"),
+                                                     actionStyle: .customAction(presentGoToPage),
+                                                     isThumbnailsEnabled: false )
+            
             if let myViewController = self.parentViewController as? BookLibraryViewController {
-                myViewController.navigationController!.pushViewController(reader!, animated: true)
+                myViewController.navigationController!.pushViewController(reader, animated: true)
             }
         }
+    }
+    
+    private func presentGoToPage() {
+        let controller = UIAlertController(title: "Ir a la pagina", message: nil, preferredStyle: .alert)
+        
+        controller.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "Page to go"
+            textField.keyboardType = UIKeyboardType.decimalPad
+        })
+        
+        controller.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(UIAlertAction) in
+            if let page = controller.textFields![0].text {
+                if page != "" {
+                    self.reader.goTo(page: Int(page)!)
+                } 
+            }
+        }))
+        
+        controller.popoverPresentationController?.barButtonItem = reader.actionButton
+        reader.present(controller, animated: true, completion: nil)
     }
 }
 

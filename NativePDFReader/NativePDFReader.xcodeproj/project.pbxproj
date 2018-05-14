@@ -146,8 +146,8 @@
 				FAE447DF2088F2C100B5186A /* HomeViewController.swift */,
 				FAF0CA6E2089778000D0B00F /* ValidationCodeViewController.swift */,
 				FAF0CA76208A7A4800D0B00F /* BookLibraryViewController.swift */,
-				FABB90AD208A7AD700A389C6 /* BookTableViewCell.swift */,
 				20AE0C1E208CEAAF0050D072 /* BookItemCollectionViewCell.swift */,
+				FABB90AD208A7AD700A389C6 /* BookTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -460,7 +460,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UTSV33R2J7;
 				INFOPLIST_FILE = NativePDFReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -483,7 +483,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UTSV33R2J7;
 				INFOPLIST_FILE = NativePDFReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
