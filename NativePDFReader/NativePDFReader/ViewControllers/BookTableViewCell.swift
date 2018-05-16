@@ -60,8 +60,8 @@ extension BookTableViewCell: UICollectionViewDataSource {
             cell?.bookSelectedName = selectedBook
             cell?.downloadButton.isHidden = false
             
-            self.viewModel.getThumbnailImage(fileName: selectedBook) { limage in
-                cell?.thumbnailImage.image = limage
+            self.viewModel.getThumbnailImage(fileName: selectedBook) { local_image in
+                cell?.thumbnailImage.image = local_image
             }
             
             for name in FileManagerServices().getNameDocumentsOnDirectory() {
@@ -97,7 +97,7 @@ extension BookTableViewCell: UICollectionViewDataSource {
         let controller = UIAlertController(title: "Ir a la pagina", message: nil, preferredStyle: .alert)
         
         controller.addTextField(configurationHandler: { (textField) in
-            textField.placeholder = "Page to go"
+       //     textField.placeholder = "Page to go"
             textField.keyboardType = UIKeyboardType.decimalPad
         })
         
