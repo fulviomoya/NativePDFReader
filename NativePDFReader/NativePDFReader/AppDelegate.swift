@@ -58,3 +58,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 }
+// Download progress https://medium.com/journey-of-one-thousand-apps/tracking-download-progress-with-swift-c1a13f3f8c66
+
