@@ -26,8 +26,8 @@ enum Errors {
 }
 
 enum TableConstants {
-    static let totalItem: CGFloat = 37
-    static let column: CGFloat = 4
+    static let totalItem: CGFloat = 7*2
+    static let column: CGFloat = 3
     
     static let minLineSpacing: CGFloat = 1
     static let minItemSpacing: CGFloat = 1
