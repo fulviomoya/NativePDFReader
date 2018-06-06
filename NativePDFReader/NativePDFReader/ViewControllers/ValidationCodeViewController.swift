@@ -35,7 +35,7 @@ class ValidationCodeViewController: BaseViewController {
                     self.showErrorMessage()
                 }
                 self.codeTextField.text = ""
-                self.removeFromParentViewController()
+                self.removeFromParent()
                 self.validateButton.isEnabled = false
             }
         }

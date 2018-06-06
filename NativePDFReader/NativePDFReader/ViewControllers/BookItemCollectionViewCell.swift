@@ -20,7 +20,7 @@ class BookItemCollectionViewCell: UICollectionViewCell {
         activityIndicator.isHidden = false
         activityIndicator.color = UIColor.white
         
-        downloadButton.setTitle("Downloading...", for: .normal)
+        downloadButton.setTitle("Downloading...", for: UIControl.State.normal)
         self.layoutIfNeeded()
         
         DispatchQueue.global(qos: .utility).async {

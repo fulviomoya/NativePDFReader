@@ -55,7 +55,7 @@ extension BookLibraryViewController: UITableViewDelegate {
             
             return totalHeight
         default:
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
 }
