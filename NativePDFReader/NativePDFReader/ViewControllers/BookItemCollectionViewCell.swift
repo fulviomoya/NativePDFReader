@@ -18,7 +18,8 @@ class BookItemCollectionViewCell: UICollectionViewCell {
     @IBAction func downloadButtonTouched(_ sender: Any) {
         print("Let's start download ... \(bookSelectedName!)")
         activityIndicator.isHidden = false
-        activityIndicator.color = UIColor.white
+        activityIndicator.color = UIColor(red:0.00, green:0.71, blue:0.32, alpha:1.0)
+        activityIndicator.startAnimating()
         
         downloadButton.setTitle("Downloading...", for: UIControl.State.normal)
         self.layoutIfNeeded()

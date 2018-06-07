@@ -18,6 +18,7 @@ class ValidationCodeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.errorDescriptionLabel.text = "El código proporcionado no es valido favor verificar."
     }
     
     @IBAction func validateButtonTouched(_ sender: Any) {
@@ -29,13 +30,12 @@ class ValidationCodeViewController: BaseViewController {
             libraryViewModel.getLibraryBooks(identifier: codeTextField.text!) { library in
                 if library.books.count > 0 {
                     UserDefaults.standard.set(self.codeTextField.text!, forKey: "SerialValidCode")
-                   
+                    self.removeFromParent()
                     self.performSegue(withIdentifier: "validationCodeToLibrarySegue", sender: library.books)
                 } else {
                     self.showErrorMessage()
                 }
-                self.codeTextField.text = ""
-                self.removeFromParent()
+                self.codeTextField.text = "" 
                 self.validateButton.isEnabled = false
             }
         }
