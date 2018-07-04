@@ -10,7 +10,7 @@ DEPENDENCIES:
   - PDFReader
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
     - PDFReader
@@ -22,4 +22,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f33faffe84a19eb7b14098016120129745e9dd56
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

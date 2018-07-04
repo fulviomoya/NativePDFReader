@@ -33,7 +33,7 @@ class LibraryViewModel {
         } else {
             //saving the thumbnailImage
             downloadService.downloadImageAsync(url: SensitiveConstants.THUMBNAIL_PATH + newThumbnailName){ image in
-                let savedThumbnail = self.fileManager.writeNew(file: newThumbnailName, data: image.pngData()!)
+                let savedThumbnail = self.fileManager.writeNew(file: newThumbnailName, data: UIImagePNGRepresentation(image)!)
                 print("was saved the thumbnail? \(savedThumbnail)")
                 completion(image)
             }

@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         if GeneralConstants.START_PERIOD_MONTH == Calendar.current.component(.month, from: Date()) {  //Removing all files if start a new school year.
             let fileManager = FileManagerServices()
             print("Removing all deprecate files from directory")

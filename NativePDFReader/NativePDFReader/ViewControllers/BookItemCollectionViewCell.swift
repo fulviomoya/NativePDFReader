@@ -21,7 +21,7 @@ class BookItemCollectionViewCell: UICollectionViewCell {
         activityIndicator.color = UIColor(red:0.00, green:0.71, blue:0.32, alpha:1.0)
         activityIndicator.startAnimating()
         
-        downloadButton.setTitle("Downloading...", for: UIControl.State.normal)
+        downloadButton.setTitle("Downloading...", for: UIControlState.normal)
         self.layoutIfNeeded()
         
         DispatchQueue.global(qos: .utility).async {
