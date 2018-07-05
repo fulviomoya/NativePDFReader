@@ -20,7 +20,23 @@ class BookLibraryViewController: BaseViewController {
         
         //disabling scroll because no need scroll inside cell
         tableView.isScrollEnabled = false
-    } 
+        
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "back_icon"), for: .normal)
+        button.setTitle("  Back", for: .normal)
+        button.setTitleColor(button.tintColor, for: .normal)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+        button.addTarget(self, action: #selector(self.reset), for: .touchUpInside)
+    }
+    
+    @objc func reset() {
+         self.navigationController!.viewControllers.removeLast(2)
+    }
+
+  /*  override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.popToRootViewController(animated: false)
+    }*/
 }
 
 extension BookLibraryViewController: UITableViewDataSource {

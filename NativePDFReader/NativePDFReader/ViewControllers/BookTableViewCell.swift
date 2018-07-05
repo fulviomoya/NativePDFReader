@@ -22,7 +22,7 @@ class BookTableViewCell: UITableViewCell {
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+       
         if let bookLibrary = BookLibraryViewController.books {
             books = bookLibrary
         } else if Network.reachability?.status.rawValue != "unreachable" {

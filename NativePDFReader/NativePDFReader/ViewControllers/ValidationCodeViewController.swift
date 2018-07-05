@@ -30,7 +30,6 @@ class ValidationCodeViewController: BaseViewController {
             libraryViewModel.getLibraryBooks(identifier: codeTextField.text!) { library in
                 if library.books.count > 0 {
                     UserDefaults.standard.set(self.codeTextField.text!, forKey: "SerialValidCode")
-                    self.removeFromParentViewController()
                     self.performSegue(withIdentifier: "validationCodeToLibrarySegue", sender: library.books)
                 } else {
                     self.showErrorMessage()
