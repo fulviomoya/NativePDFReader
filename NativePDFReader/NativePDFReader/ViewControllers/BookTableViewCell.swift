@@ -88,7 +88,7 @@ extension BookTableViewCell: UICollectionViewDataSource {
                                                      isThumbnailsEnabled: false )
             
             if let myViewController = self.parentViewController as? BookLibraryViewController {
-                myViewController.navigationController!.pushViewController(reader, animated: true)
+                myViewController.navigationController?.pushViewController(reader, animated: true)
             }
         }
     }
