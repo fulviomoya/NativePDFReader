@@ -29,7 +29,7 @@ class ValidationCodeViewController: BaseViewController {
         } else {
             libraryViewModel.getLibraryBooks(identifier: codeTextField.text!) { library in
                 if library.books.count > 0 {
-                    UserDefaults.standard.set(self.codeTextField.text!, forKey: "SerialValidCode")
+                    self.saveSerialApproved()
                     self.performSegue(withIdentifier: "validationCodeToLibrarySegue", sender: library.books)
                 } else {
                     self.showErrorMessage()
@@ -50,6 +50,18 @@ class ValidationCodeViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "validationCodeToLibrarySegue" {
             BookLibraryViewController.books = sender as? [Book]
+        }
+    }
+    
+    fileprivate func saveSerialApproved() {
+        if var serialUsed = UserDefaults.standard.array(forKey: "SerialValidCode") as? [String] {
+            if !serialUsed.contains(self.codeTextField.text!) { //Idenfy new serials.
+                serialUsed.append(self.codeTextField.text!)
+            }
+            print("serial used serials: \(String(describing: serialUsed))")
+            UserDefaults.standard.set(serialUsed, forKey: "SerialValidCode")
+        } else {
+            UserDefaults.standard.set([self.codeTextField.text!], forKey: "SerialValidCode")
         }
     }
     
