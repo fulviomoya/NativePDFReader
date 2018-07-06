@@ -124,7 +124,7 @@
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="P1r-d1-8oo" secondAttribute="trailing" id="l2N-SV-Hk7"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="L429OKT1XJBBB2R" borderStyle="roundedRect" placeholder="Digite su código aquí" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEO-Vz-xrB">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite su código aquí" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bEO-Vz-xrB">
                                 <rect key="frame" x="198" y="318.5" width="388" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="SHU-Kg-Bvk"/>
@@ -372,6 +372,6 @@
         <image name="tapestry" width="1463" height="1130"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="e18-qb-r1b"/>
+        <segue reference="Ii9-fj-5Ba"/>
     </inferredMetricsTieBreakers>
 </document>

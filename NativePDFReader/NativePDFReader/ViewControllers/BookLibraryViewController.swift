@@ -19,7 +19,11 @@ class BookLibraryViewController: BaseViewController {
         tableView.delegate   = self
         
         //disabling scroll because no need scroll inside cell
-        tableView.isScrollEnabled = false
+        tableView.isScrollEnabled = false 
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) { //Cleaning collection table view, refesh content when appear
+        BookLibraryViewController.books = nil
     }
 }
 
