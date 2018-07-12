@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		204F522B20F5B6260008C85A /* AvanceEncryptation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204F522A20F5B6260008C85A /* AvanceEncryptation.swift */; };
 		20A6686E20969402000A6195 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A6686D20969402000A6195 /* Download.swift */; };
 		20A66870209695B8000A6195 /* DownloadServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A6686F209695B8000A6195 /* DownloadServices.swift */; };
 		20AE0C17208B8AAB0050D072 /* SensitiveConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AE0C16208B8AAB0050D072 /* SensitiveConstants.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		204F522A20F5B6260008C85A /* AvanceEncryptation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvanceEncryptation.swift; sourceTree = "<group>"; };
 		20A6686D20969402000A6195 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		20A6686F209695B8000A6195 /* DownloadServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadServices.swift; sourceTree = "<group>"; };
 		20AE0C16208B8AAB0050D072 /* SensitiveConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitiveConstants.swift; sourceTree = "<group>"; };
@@ -72,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20E81D7920F45F6D003DB56F /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				204F522A20F5B6260008C85A /* AvanceEncryptation.swift */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
 		475B96EA0E506AF14651AE1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +120,7 @@
 		FAE447DC2088F2C100B5186A /* NativePDFReader */ = {
 			isa = PBXGroup;
 			children = (
+				20E81D7920F45F6D003DB56F /* Security */,
 				FAE447DD2088F2C100B5186A /* AppDelegate.swift */,
 				FAF0CA6620895EEE00D0B00F /* Models */,
 				FAF88B9D2088FE4A00B14D4B /* Utils */,
@@ -263,12 +274,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-NativePDFReader/Pods-NativePDFReader-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/PDFReader/PDFReader.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PDFReader.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +324,7 @@
 				FA396C81208EB78E0052CB10 /* ServiceManagerFake.swift in Sources */,
 				FAF88B9A2088FD2800B14D4B /* ServicesManager.swift in Sources */,
 				20AE0C19208BAC940050D072 /* FileManagerServices.swift in Sources */,
+				204F522B20F5B6260008C85A /* AvanceEncryptation.swift in Sources */,
 				FA78A37A20EEF40C0088CCC2 /* BookTableViewCell_DataSource.swift in Sources */,
 				FAE447E02088F2C100B5186A /* HomeViewController.swift in Sources */,
 				FA142E7D20A12DA30005B16F /* Reachability.swift in Sources */,
